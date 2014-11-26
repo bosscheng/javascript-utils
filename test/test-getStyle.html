@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+    <style>
+        div#container {
+            font: 2em/2.25em Verdana, Geneva, Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+
+</div>
+<script src="../utils.js"></script>
+<script>
+    var $container = document.getElementById("container");
+    var elementFontSize = org.util.getStyle($container, "font-size");
+    console.log(elementFontSize);
+</script>
+</body>
+</html>
