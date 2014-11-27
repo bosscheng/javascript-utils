@@ -376,18 +376,51 @@ org.util = {};
     }
 
     /*
-     * 判断鼠标是否移除事件
+     * 全角半角的转换
+     *
+     * //iCase: 0全到半，1半到全，其他不转化
      * */
-    util.isMouseOut = function (e, handler) {
+    util.chgCase = function (sStr, iCase) {
+        if (typeof sStr != "string" || sStr.length <= 0 || !(iCase === 0 || iCase == 1)) {
+            return sStr;
+        }
+
+        if (iCase) {
+            return util.toDBC(sStr);
+        }
+        else {
+            return util.toCDB(sStr);
+        }
 
     }
 
 
     /*
+     * 判断鼠标是否移除事件
+     * todo: 待测试
+     * */
+    util.isMouseOut = function (e, handler) {
+        if (e.type !== 'mouseout') {
+            return false;
+        }
+        var reltg = e.relatedTarget ? e.relatedTarget : e.type === 'mouseout' ? e.toElement : e.fromElement;
+        while (reltg && reltg !== handler) {
+            reltg = reltg.parentNode;
+        }
+        return (reltg !== handler);
+    }
+
+
+    /*
      * 获取窗口可视范围的宽和高
+     * todo: 待测试
      * */
     util.getViewSize = function () {
-
+        var de = document.documentElement;
+        var db = document.body;
+        var viewW = de.clientWidth == 0 ? db.clientWidth : de.clientWidth;
+        var viewH = de.clientHeight == 0 ? db.clientHeight : de.clientHeight;
+        return Array(viewW, viewH);
     }
 
     /*
@@ -571,9 +604,12 @@ org.util = {};
 
     /*
      * set sort
+     * 按字母排序，对每行进行数组排序
      * */
     util.setSort = function () {
-
+        var text = K1.value.split(/[\r\n]/).sort().join("\r\n");//顺序
+        var test = K1.value.split(/[\r\n]/).sort().reverse().join("\r\n");//反序
+        K1.value = K1.value != text ? text : test;
     }
 
     /*
@@ -602,6 +638,7 @@ org.util = {};
 
     /*
      * 打开新的窗口，
+     * todo: 待验证
      * */
     util.openWindow = function (url, windowName, width, height) {
         var x = parseInt(screen.width / 2.0) - (width / 2.0);
@@ -718,7 +755,6 @@ org.util = {};
 
 
 })(org.util);
-
 
 
 /**
