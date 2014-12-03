@@ -428,5 +428,36 @@ org.util = org.util || {};
         }
     }
 
+    /**
+     * @doc function
+     * @name util.size
+     * @function
+     *
+     * @description
+     *      计算array 中的元素的 个数，或者对象所拥有的属性，或者字符串的长度
+     *
+     * @param {Object | Array | string}  obj object ,array or string to inspect 
+     * @param {boolean} [ownPropsOnly = false] count only 'own' properties in an object
+     * @return {number} the size of 'obj' or '0' if 'obj' is neither an object nor an array;
+     *
+     * */
+    util.size = function (obj, ownPropsOnly) {
+        var count = 0, key;
+
+        if (util.isArray(obj) || util.isString(obj)) {
+            return obj.length;
+        }
+
+        else if (util.isObject(obj)) {
+            for (key in obj) {
+                if (!ownPropsOnly || obj.hasOwnProperty(key)) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+
 })(org.util);
 
