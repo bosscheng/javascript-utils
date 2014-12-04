@@ -1,5 +1,5 @@
 /**
- * javascript algorithm
+ * javascript algorithm 算法
  * Author: bosscheng
  * Data: 14-11-27
  */

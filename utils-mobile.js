@@ -1,6 +1,6 @@
 /**
- * 二蛋，记得添加备注啊
- * Author: Administrator
+ * utils 移动端的方法
+ * Author: bosscheng
  * Data: 14-11-27
  */
 

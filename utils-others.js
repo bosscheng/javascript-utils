@@ -1,5 +1,5 @@
 /**
- * javascript algorithm
+ * javascript others 杂类
  * Author: bosscheng
  * Data: 14-11-27
  */
@@ -134,18 +134,6 @@ org.util = org.util || {};
 
 
     /*
-     * 是否为数字类型
-     * */
-    util.isDigit = function (value) {
-        var patrn = /^[0-9]*$/;
-        if (patrn.exec(value) === null || value === "") {
-            return false
-        } else {
-            return true
-        }
-    }
-
-    /*
      * 设置 cookie
      * */
     util.setCookie = function (name, value, Hours, domain) {
@@ -167,6 +155,7 @@ org.util = org.util || {};
         if (arr != null) return unescape(arr[2]);
         return null
     }
+
     /*
      * 检查url是否有效
      * */
@@ -311,7 +300,6 @@ org.util = org.util || {};
         return false;
     }
 
-
     /*
      * 随机数时间戳
      * */
@@ -436,7 +424,7 @@ org.util = org.util || {};
      * @description
      *      计算array 中的元素的 个数，或者对象所拥有的属性，或者字符串的长度
      *
-     * @param {Object | Array | string}  obj object ,array or string to inspect 
+     * @param {Object | Array | string}  obj object ,array or string to inspect
      * @param {boolean} [ownPropsOnly = false] count only 'own' properties in an object
      * @return {number} the size of 'obj' or '0' if 'obj' is neither an object nor an array;
      *
@@ -455,8 +443,75 @@ org.util = org.util || {};
                 }
             }
         }
-
         return count;
+    }
+
+    /**
+     *
+     * */
+    util.loadJs = function (script_file_url, script_id) {
+        var head = document.head || document.getElementByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        script.setAttribute("src", script_file_url);
+        script.setAttribute("id", script_id);
+        script.setAttribute("charset", "utf-8");
+
+        var scriptId = document.getElementById(script_id);
+        // 如果已经添加了，删除掉。
+        if (scriptId) {
+            head.removeChild(scriptId);
+        }
+        head.appendChild(script);
+
+        // IE
+        if (window.all) {
+            script.onreadystatechange = function () {
+                if (script.readyStatus === "loaded" || script.readyState === "complete") {
+                    // 执行后续事件
+                }
+            }
+        }
+        // W3C
+        else {
+            script.onload = function () {
+                // 执行后续操作。
+            }
+        }
+    }
+
+    /**
+     *
+     * */
+    util.loadCss = function (css_file_url, link_id) {
+        var head = document.head || document.getElementByTagName("head")[0] || document.documentElement;
+        var script = document.createElement("link");
+        script.setAttribute("rel", "stylesheet");
+        script.setAttribute("href", css_file_url);
+        script.setAttribute("id", link_id);
+        script.setAttribute("charset", "utf-8");
+
+        var linkId = document.getElementById(link_id);
+        // 如果已经添加了，删除掉。
+        if (linkId) {
+            head.removeChild(linkId);
+        }
+        head.appendChild(linkId);
+
+        // IE
+        if (window.all) {
+            script.onreadystatechange = function () {
+                if (script.readyStatus === "loaded" || script.readyState === "complete") {
+                    // 执行后续事件
+                }
+            }
+        }
+        // W3C
+        else {
+            script.onload = function () {
+                // 执行后续操作。
+            }
+        }
     }
 
 })(org.util);
