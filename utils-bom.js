@@ -13,7 +13,7 @@ org.util = org.util || {};
     /**
      *
      * */
-    util.preventDefault = function (e) {
+    util.preventDefault = function (e) {        
         if (!e) {
             return;
         }
@@ -58,10 +58,23 @@ org.util = org.util || {};
         return event.srcElement || event.target;
     }
 
+
+    /*
+
+    */
     util.getType = function (e) {
         var target = util.getTarget(e);
         return target.getAttribute("type") || target.type;
     }
+
+    /*
+        @desc
+            get attribute
+    */
+    util.getAttribute = function(target,attribute){
+        return target.getAttribute(attribute) || target[attribute];
+    }
+
 
     /**
      *
@@ -82,7 +95,8 @@ org.util = org.util || {};
     }
 
     /**
-     *
+     * @desc 
+     *     remove event  
      * */
     util.removeEvent = function (element, type, handler) {
         if (!element) {
@@ -96,6 +110,52 @@ org.util = org.util || {};
         else if (element.detachEvent) {
             element.detachEvent("on" + type, handler);
         }
+    }
+
+    /*
+        @desc
+            forbid backspace enter
+        
+    */
+    util.forbidBackSpace = function(){
+        document.onkeyup = _forbidBackSpace;
+
+        function _forbidBackSpace(e){
+            var event = util.getEvent(e);
+            var target = util.getTarget(e);
+            var type = util.getType(e);
+            if(event.keyCode === 8){
+                // support html5
+                var inputTypes = ['password','text','textarea','number','email','date','datetime','datetime-local','month','time','url','week','tel'];
+
+                type = util.isString(type) ? type.toLowerCase() : type;
+
+                var readOnly = util.getAttribute(target,'readOnly');
+                var disabled = util.getAttribute(target,'disabled');
+
+                readOnly = util.isUndefined(readOnly) ? false : readOnly;
+                disabled = util.isUndefined(disabled) ? false : disabled;
+
+                var isInputType = util.indexOf(inputTypes,type) !== -1;
+                var isReadOnlyOrDisabled = readOnly === true || disabled === true;
+
+                var enableOne = isInputType && isReadOnlyOrDisabled;
+                var enableTwo = !isInputType;
+                if(enableOne || enableTwo){
+                    return false;
+                }
+            }   
+            return true; 
+        }
+    }
+
+    /*
+        @desc
+            forbid context menu 
+    
+    */
+    util.forbidContextMenu = function(){
+        window.document.oncontextmenu = util.preventDefault(e);
     }
 
 
