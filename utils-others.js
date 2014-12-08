@@ -589,6 +589,20 @@ org.util = org.util || {};
         // 
         return {"srartDate":startDate,"endDate":endDate};
     }
+    /*
+    设置http请求头
+    */
+    util.setHandler = function(xhr,headers){
+        if(headers){
+            for(var headerName in headers){
+                if(headerName.toLowCase() === "content-type"){
+                    continue;
+                }
+                xhr.setRequestHeader(headerName,headers[headerName]);
+            }
+        }
+        
+    }
 
 })(org.util);
 
