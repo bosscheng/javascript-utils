@@ -513,6 +513,82 @@ org.util = org.util || {};
             }
         }
     }
+    
+    /**
+        @dec
+            获取时间:
+            依赖于类库 （moment）
+        @param {int} type : data(1),week(2),month(3),quarter(4)； default 1
+        @return {Object} 格式化的时间 json 格式
+    */
+    util.getDate = function(type){
+        var startDate = parseInt(moment().format('YYYY-MM-DD'));
+        var endDate = parseInt(moment().format('YYYY-MM-DD'));
+        if(type){
+            // 如果是星期
+            if(type === 2){
+                // 今天是星期几？ （0-6）
+                var today = parseInt(moment().format('d'));
+                // 星期一
+                if(today === 1){
+                    startDate = parseInt(moment().format('YYYY-MM-DD'));
+                }
+                else if(today === 0){
+                    startDate = parseInt(moment().subtract('days',(today + 7) -1).format('YYYY-MM-DD'));
+                }
+                else{
+                    startDate = parseInt(moment().subtract('days',today -1).format('YYYY-MM-DD'));
+                }
+                
+                endDate = parseInt(moment().format('YYYY-MM-DD'));
+            }
+            // 如果是当月
+            else if(type === 3){
+                 // 今天是几号？ （1-31）
+                var today = parseInt(moment().format('D'));
+                // 如果是1号
+                if(today === 1){
+                    startDate = parseInt(moment().format('YYYY-MM-DD'));
+                }
+                else{
+                    startDate = parseInt(moment().subtract('days',today -1).format('YYYY-MM-DD'));
+                }
+                
+                endDate = parseInt(moment().format('YYYY-MM-DD'));
+            }
+            // 如果是当前季度
+            else if(type === 4){
+                 // 当月是第几个月
+                var month = parseInt(moment().format('M'));
+                var year = parseInt(moment().format('YYYY'));
+                
+                var startYear = null;
+                var startMonth = null;
+                
+                if(month >= 3){
+                    startMonth = month - 2;
+                    if(startMonth < 10){
+                        startMonth = '0' + startMonth;
+                    }
+                    startDate = year + '-' + startMonth + '-' + '01';
+                    
+                }
+                // 如果是一月 或者二月，那么开始的月就是去年了。
+                else{
+                     startYear = year - 1;
+                     startMonth = 12 + (month - 2);
+                    if(startMonth < 10){
+                        startMonth = '0' + startMonth;
+                    }
+                    startDate = year + '-' + startMonth + '-' + '01';
+                    
+                }
+                endDate = parseInt(moment().format('YYYY-MM-DD'));
+            }
+        }
+        // 
+        return {"srartDate":startDate,"endDate":endDate};
+    }
 
 })(org.util);
 
