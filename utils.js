@@ -15,7 +15,9 @@ org.util = {};
     var AP = Array.prototype;
 
     /**
-     * foreach
+     * @desc
+     *      foreach:优先取用ECMAScript 5 的方法、
+     *  
      * */
     var forEach = util.forEach = AP.forEach ?
         //
@@ -31,6 +33,7 @@ org.util = {};
 
     /**
      * keys
+     *      优先考虑高级浏览器支持的方法，当不支持的时候，利用var p in o 结合 hasOwnProperty()方法
      * */
     var keys = util.keys = Object.keys || function (o) {
         var ret = [];
@@ -46,6 +49,7 @@ org.util = {};
 
     /**
      * has
+     *      利用hasOwnProperty 方法
      * */
     util.has = function (obj, key) {
         return Object.prototype.hasOwnProperty.call(obj, key);
@@ -227,7 +231,7 @@ org.util = {};
 
     /**
      * 全角转化为半角函数
-     *
+     *      主要是要记住 编码
      * */
     util.toCDB = function (str) {
         var result = '';
@@ -306,13 +310,14 @@ org.util = {};
     /*
      * 获取窗口可视范围的宽和高
      * todo: 待测试
+        @return {array} [width,height]
      * */
     util.getViewSize = function () {
         var de = document.documentElement;
         var db = document.body;
         var viewW = de.clientWidth == 0 ? db.clientWidth : de.clientWidth;
         var viewH = de.clientHeight == 0 ? db.clientHeight : de.clientHeight;
-        return Array(viewW, viewH);
+        return [viewW, viewH];
     }
 
     /*
@@ -581,13 +586,13 @@ org.util = {};
     util.backTop = function (btnId) {
         // $btn
         var btn = document.getElementById(btnId);
-
+        // element
         var d = document.documentElement;
-
+        //  body
         var b = document.body;
-        //
+        // 监听 scroll 事件
         window.onscroll = set;
-
+        // 默认是隐藏的
         btn.style.display = "none";
         // 按钮被点击了之后
         btn.onclick = function () {
@@ -597,7 +602,7 @@ org.util = {};
             window.onscroll = null;
             // 每个10ms间隔 往上面移动，当返回到顶部之后，就可以clearInterval 了。
             this.timer = setInterval(function () {
-
+                // 不断计算距离顶部的距离，当距离顶部的距离小于多少之后就可以移除掉了。
                 d.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
                 b.scrollTop -= Math.ceil((d.scrollTop + b.scrollTop) * 0.1);
 
@@ -626,7 +631,7 @@ org.util = {};
      *
      * */
     util.trim = function (str) {
-
+        // 
         var reExtraSpace = /^\s*(.*?)\s+$/;
 
         return str.replace(reExtraSpace, '$1');
