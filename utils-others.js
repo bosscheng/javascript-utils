@@ -603,6 +603,32 @@ org.util = org.util || {};
         }
         
     }
+    
+    /*
+    将参数格式化成array对象。
+    */
+    util.convertToArray = function(options){
+        if(util.isString(options)){
+            try{
+                return JSON.parse(options);
+            }
+            catch(e){
+                throw e;
+            }
+        }
+        if(util.isArray(options)){
+            return options;
+        }
+        
+        if(util.isUndefined(options) || options === null){
+            return [];
+        }
+        
+        if(options instanceof Object){
+            return [options];
+        }
+        throw "Conversion Error " + options + ",typeof " + (typeof options);
+    }
 
 })(org.util);
 
