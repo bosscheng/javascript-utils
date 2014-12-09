@@ -629,6 +629,25 @@ org.util = org.util || {};
         }
         throw "Conversion Error " + options + ",typeof " + (typeof options);
     }
+    
+    /*
+        mix 最小化
+    */
+    util.mix = function(r,s,wl){
+        // 复制所有的属性
+        for(var p in s){
+            if(s.hasOwnProperty(p)){
+                if(wl && indexOf(wl,p) === -1){
+                    continue;
+                }
+                // 在 iphone 1 代等设备的Safari中，prototype也会被枚举出来，这里要过滤掉。
+                if(p!== "prototype"){
+                    r[p] = s[p]; 
+                }
+            }
+        }
+    }
+    
 
 })(org.util);
 
