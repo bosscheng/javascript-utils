@@ -637,7 +637,7 @@ org.util = org.util || {};
         // 复制所有的属性
         for(var p in s){
             if(s.hasOwnProperty(p)){
-                if(wl && indexOf(wl,p) === -1){
+                if(wl && util.indexOf(wl,p) === -1){
                     continue;
                 }
                 // 在 iphone 1 代等设备的Safari中，prototype也会被枚举出来，这里要过滤掉。
