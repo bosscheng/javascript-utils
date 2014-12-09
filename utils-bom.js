@@ -13,10 +13,10 @@ org.util = org.util || {};
     /**
      * 阻止默认事件的发生
      *   如果使用jQuery的话，可以使用return false（jQuery 兼容）
-     * 
+     *
      *      主要依赖于如果支持 preventDefault 方法，如果不支持就是用returnValue
      * */
-    util.preventDefault = function (e) {        
+    util.preventDefault = function (e) {
         if (!e) {
             return;
         }
@@ -31,7 +31,7 @@ org.util = org.util || {};
 
     /**
      * 阻止传播
-     * 
+     *
      *      结合 stopPropagation 方法与 cancelBubble 方法
      * */
     util.stopPropagation = function (e) {
@@ -66,17 +66,17 @@ org.util = org.util || {};
 
     /*
 
-    */
+     */
     util.getType = function (e) {
         var target = util.getTarget(e);
         return target.getAttribute("type") || target.type;
     }
 
     /*
-        @desc
-            get attribute
-    */
-    util.getAttribute = function(target,attribute){
+     @desc
+     get attribute
+     */
+    util.getAttribute = function (target, attribute) {
         return target.getAttribute(attribute) || target[attribute];
     }
 
@@ -100,8 +100,8 @@ org.util = org.util || {};
     }
 
     /**
-     * @desc 
-     *     remove event  
+     * @desc
+     *     remove event
      * */
     util.removeEvent = function (element, type, handler) {
         if (!element) {
@@ -118,49 +118,75 @@ org.util = org.util || {};
     }
 
     /*
-        @desc
-            forbid backspace enter
-        
-    */
-    util.forbidBackSpace = function(){
+     @desc
+     forbid backspace enter
+
+     */
+    util.forbidBackSpace = function () {
         document.onkeyup = _forbidBackSpace;
 
-        function _forbidBackSpace(e){
+        function _forbidBackSpace(e) {
             var event = util.getEvent(e);
             var target = util.getTarget(e);
             var type = util.getType(e);
-            if(event.keyCode === 8){
+            if (event.keyCode === 8) {
                 // support html5
-                var inputTypes = ['password','text','textarea','number','email','date','datetime','datetime-local','month','time','url','week','tel'];
+                var inputTypes = ['password', 'text', 'textarea', 'number', 'email', 'date', 'datetime', 'datetime-local', 'month', 'time', 'url', 'week', 'tel'];
 
                 type = util.isString(type) ? type.toLowerCase() : type;
 
-                var readOnly = util.getAttribute(target,'readOnly');
-                var disabled = util.getAttribute(target,'disabled');
+                var readOnly = util.getAttribute(target, 'readOnly');
+                var disabled = util.getAttribute(target, 'disabled');
 
                 readOnly = util.isUndefined(readOnly) ? false : readOnly;
                 disabled = util.isUndefined(disabled) ? false : disabled;
 
-                var isInputType = util.indexOf(inputTypes,type) !== -1;
+                var isInputType = util.indexOf(inputTypes, type) !== -1;
                 var isReadOnlyOrDisabled = readOnly === true || disabled === true;
 
                 var enableOne = isInputType && isReadOnlyOrDisabled;
                 var enableTwo = !isInputType;
-                if(enableOne || enableTwo){
+                if (enableOne || enableTwo) {
                     return false;
                 }
-            }   
-            return true; 
+            }
+            return true;
         }
     }
 
     /*
-        @desc
-            forbid context menu 
-    
-    */
-    util.forbidContextMenu = function(){
+     @desc
+     forbid context menu
+
+     */
+    util.forbidContextMenu = function () {
         window.document.oncontextmenu = util.preventDefault(e);
+    }
+
+    /**
+     *
+     *  只要这么多属性中包含一个就可以了。
+     * */
+    util.hasOwnPropertiesByContains = function (object, properties) {
+        for (var i = 0, len = properties.length; i < len; i++) {
+            if (object.hasOwnProperty(properties[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 必须全部包含才行
+     * */
+    util.hasOwnPropertiesByAll = function (object, properties) {
+        var eqNum = 0, len = properties.length, i = 0;
+        for (; i < len; i++) {
+            if (object.hasOwnProperty(properties[i])) {
+                eqNum = eqNum + 1;
+            }
+        }
+        return eqNum === len;
     }
 
 

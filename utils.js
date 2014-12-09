@@ -17,7 +17,7 @@ org.util = {};
     /**
      * @desc
      *      foreach:优先取用ECMAScript 5 的方法、
-     *  
+     *
      * */
     var forEach = util.forEach = AP.forEach ?
         //
@@ -310,7 +310,7 @@ org.util = {};
     /*
      * 获取窗口可视范围的宽和高
      * todo: 待测试
-        @return {array} [width,height]
+     @return {array} [width,height]
      * */
     util.getViewSize = function () {
         var de = document.documentElement;
@@ -649,6 +649,19 @@ org.util = {};
      * */
     util.rtrim = function (str) {
         return str.replace(/(s*| *)/, '');
+    }
+
+    /**
+     *
+     * */
+    util.toString = function () {
+        return Object.prototype.toString;
+    }
+    /**
+     *
+     * */
+    util.hasOwn = function () {
+        return Object.prototype.hasOwnProperty;
     }
 
 
