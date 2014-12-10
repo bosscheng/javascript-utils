@@ -70,9 +70,13 @@ function getMethod(host, methodName) {
     return method;
 }
 
+/**
+ * 封装方法
+ * */
 function wrap(methodName) {
     // 很好的利用了this对象
     var old = this[methodName];
+    // 重新封装了这个方法
     this[methodName] = function () {
         var args = Array.prototype.slice.call(arguments);
         var beforeArgs = ["before:" + methodName].concat(args);
