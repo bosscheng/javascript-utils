@@ -40,6 +40,61 @@ var org.util = org.util || {};
       });
       return results;
    }
+   /*
+   
+   @desc 
+      创建一个iframe对象。
+   @param {String} frameName
+   @param {String} src
+   */
+   util.createIframe = function(frameName,src){
+      if(src === null){
+         src = "javascript:;";
+      }
+      removeIframe(frameName);
+      
+      var frame = document.createElement("iframe");
+      franme.height = 0;
+      frame.width = 0;
+      frame.style && frame.style.display = "none";
+      frame.name = frameName;
+      frame.id = frameName; 
+      frame.src = src;
+      document.body && document.body.appendChild(frame);
+      window.frames[frameName].name = frameName;
+      return frame;
+   }
+   
+   /*
+   @param {String} frameName
+   */
+   var removeIframe = util.removeIframe = function(frameName){
+      var iframe = document.getElementById(frameName);
+      if(iframe){
+         document && document.body && document.body.removeChild(iframe);
+      }
+   }
+   /*
+   @desc 
+      移除一个node节点
+   @param {string} 
+   
+   */
+   var removeNode = util.removeNode = function(nodeId){
+      try{
+         if(typeof nodeId === "string"){
+            var node = document.getElementById(nodeId);
+            if(node && node.parentNode){
+               node.parentNode.removeChile(nodeId);
+            }
+         }
+      }
+      catch(e){
+         
+      }
+   }
+   
+   
    
    
 })(org.util);
