@@ -648,6 +648,15 @@ org.util = org.util || {};
         }
     }
     
+    /*
+        驼峰转下划线
+    */
+    util.camelToUnderscore = function(str){
+        return str.replace(/([A-Z])/g,function($0,$1){
+            return '_' + $1.toLowerCase();
+        })
+    }
+    
 
 })(org.util);
 
