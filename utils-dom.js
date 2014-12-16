@@ -65,6 +65,20 @@ var org.util = org.util || {};
       return frame;
    }
    
+   /**
+      create iframe
+   */
+   util.createIframeNew = function(url){
+      // 保证只创建一次
+      if(!arguments.callee.iframe){
+         var iframe = document.createElement("iframe");
+         iframe.style.display = "none";
+         document.body.appendChild(iframe);
+         arguments.callee.iframe = iframe;
+      }
+      arguments.callee.iframe.src = url;
+   }
+   
    /*
    @param {String} frameName
    */
@@ -93,6 +107,8 @@ var org.util = org.util || {};
          
       }
    }
+   
+   
    
    
    
