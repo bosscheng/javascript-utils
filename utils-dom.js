@@ -112,5 +112,54 @@ var org.util = org.util || {};
    
    
    
-   
 })(org.util);
+
+
+// 临时占坑
+
+(function(){
+   var _init = function(){
+      var debug = (location.hostname.indexOf('.example.com') === -1);
+      if(TB.bom.getCookie("_tb_defaultbackpop_") === 1 && !debug){
+         return;
+      }
+      
+      var nowDate = new Date();
+      var nowTime = nowDate.getHours() * 3600 + nowDate.getMinutes() * 60 + nowDate.getSeconds();
+      var DAY = 24* 3600;
+      var leaveTime = DAY- nowTime;
+      TB.bom.setCookie("__tb_defaultbackpop_",1,leaveTime/DAY,document.domain,'/');
+      
+      var popuped = false;
+      
+      var popAd = function(){
+         if(popuped) return;
+         popuped = true;
+         var purl = "www.example.com";
+         var h = 480;
+         var w = 760;
+         var adPopup = window.open('about:blank',"_blank",''....);
+         addPopup.blur();
+         addPopup.opener.focus();
+         adPopup.location = purl;
+         $E.removeListener(document.body,'click',argument.callee);
+         
+      }
+      
+      try{
+         popAd();
+      }
+      catch(e){
+         popuped = false;
+         $E.on(document.body,'click',popAd);
+      }
+      
+   }
+   
+   $E.on(window,'load',_init);
+})();
+
+
+
+
+
