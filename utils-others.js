@@ -657,6 +657,14 @@ org.util = org.util || {};
         })
     }
     
+    // 获取被被加载的host
+    util.getHostBySelf(id){
+        var scripts = document.getElementsByTagName("script");
+        var selfSctipt = document.getElementById(id) || scripts[scripts.length - 1];
+        var url = selfScript.hasAttribute ? selfScript.src : selfScript.getAttribute("src",4);
+        var arr =url.split("//");
+        return arr[0] + '//' + arr[1].split('/')[0];
+    }
 
 })(org.util);
 
