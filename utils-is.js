@@ -544,6 +544,48 @@ org.util = {};
         return key === undefined || util.hasOwn.call(object,key);
 
     }
+    /*
+    判断浏览器
+    */
+    // 是否是IE
+    util.isIE = function(){
+        return navigator.userAgent.indexOf("MSIE") > 0;
+    }
+    
+    util.isIE6 = function(){
+        return navigator.userAgent.indexOf("MSIE 6.0") > 0;
+    }
+    
+    util.isIE7 = function(){
+        return navigator.userAgent.indexOf("MSIE 7.0") > 0;
+    }
+    
+    util.isIE8 = function(){
+        return navigator.userAgent.indexOf("MSIE 8.0") > 0;
+    }
+    
+    util.isIE9 = function(){
+        return navigator.userAgent.indexOf("MSIE 9.0") > 0;
+    }
+    
+    util.isIE10 = function(){
+        return navigator.userAgent.indexOf("MSIE 10.0") > 0;
+    }
+    
+    util.isIE11 = function(){
+        return navigator.userAgent.indexOf("MSIE 11.0") > 0;
+    }
+    
+    util.isChrome = function(){
+        // 这样存在问题的， 很多内核都是使用的chrome内核， 会导致判断不准确。
+        return navigator.userAgent.indexOf("Chrome") > 0;
+    }
+    
+    util.isFirefox = function(){
+        return navigator.userAgent.indexOf("Firefox") > 0;
+    }
+    
+    
     /**
      * is 判断 结束
      ***/
