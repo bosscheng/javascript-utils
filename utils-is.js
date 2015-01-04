@@ -495,11 +495,13 @@ org.util = {};
      */
     /** Detect if own properties are iterated after inherited properties (IE < 9) */
     var iteratesOwnLast;
-    (function() {
+    (function () {
         var props = [];
+
         function Ctor() {
             this.x = 1;
         }
+
         Ctor.prototype = {
             valueOf: 1,
             y: 1
@@ -518,7 +520,7 @@ org.util = {};
 
         try {
             // constructor 必须是一个对象
-            if(object.constructor && util.hasOwn.call(object," ") && !util.hasOwn.call(object.constructor.prototype,"isPrototypeOf")){
+            if (object.constructor && util.hasOwn.call(object, " ") && !util.hasOwn.call(object.constructor.prototype, "isPrototypeOf")) {
                 return false;
             }
         }
@@ -531,61 +533,78 @@ org.util = {};
         // Support: IE<9
         // Handle iteration over inherited properties before own properties.
         // http://bugs.jquery.com/ticket/12199
-        if(iteratesOwnLast){
-            for(key in object){
-                return util.hasOwn.call(object,key);
+        if (iteratesOwnLast) {
+            for (key in object) {
+                return util.hasOwn.call(object, key);
             }
         }
 
         // Own properties are enumerated firstly, so to speed up,
         // if last one is own, then all properties are own.
-        for(key in object){
+        for (key in object) {
         }
-        return key === undefined || util.hasOwn.call(object,key);
+        return key === undefined || util.hasOwn.call(object, key);
 
     }
+
+
     /*
-    判断浏览器
-    */
+     判断浏览器
+     */
     // 是否是IE
-    util.isIE = function(){
+    util.isIE = function () {
         return navigator.userAgent.indexOf("MSIE") > 0;
     }
-    
-    util.isIE6 = function(){
+
+    util.isIE6 = function () {
         return navigator.userAgent.indexOf("MSIE 6.0") > 0;
     }
-    
-    util.isIE7 = function(){
+
+    util.isIE7 = function () {
         return navigator.userAgent.indexOf("MSIE 7.0") > 0;
     }
-    
-    util.isIE8 = function(){
+
+    util.isIE8 = function () {
         return navigator.userAgent.indexOf("MSIE 8.0") > 0;
     }
-    
-    util.isIE9 = function(){
+
+    util.isIE9 = function () {
         return navigator.userAgent.indexOf("MSIE 9.0") > 0;
     }
-    
-    util.isIE10 = function(){
+
+    util.isIE10 = function () {
         return navigator.userAgent.indexOf("MSIE 10.0") > 0;
     }
-    
-    util.isIE11 = function(){
+
+    util.isIE11 = function () {
         return navigator.userAgent.indexOf("MSIE 11.0") > 0;
     }
-    
-    util.isChrome = function(){
+
+    util.isChrome = function () {
         // 这样存在问题的， 很多内核都是使用的chrome内核， 会导致判断不准确。
         return navigator.userAgent.indexOf("Chrome") > 0;
     }
-    
-    util.isFirefox = function(){
+
+    util.isFirefox = function () {
         return navigator.userAgent.indexOf("Firefox") > 0;
-    }
-    
-    
+    };
+
+    /**
+     *
+     * */
+    util.isType = function (type) {
+        return function (obj) {
+            return Object.prototype.toString.call(obj) === "[object " + type + "]"
+        }
+    };
+
+
+    var isObject = util.isType("Object");
+    var isArray = Array.isArray || util.isType("Array");
+    var isFunction = util.isType("Function");
+    var isString = util.isType("String");
+
+
     /**
      * is 判断 结束
      ***/
