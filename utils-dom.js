@@ -108,10 +108,19 @@ var org.util = org.util || {};
       }
    }
    
-   
-   
-   
-   
+   /**
+    * 鼠标滚轮事件
+    * */
+   util.manualMouseWheel = function(el){
+       el.on('mousewheel DOMMouseScroll',function(e){
+           var oe = e.originalEvent;
+           var delta = oe.wheelDelta/120 || -oe.detail /3;
+           $(this).scrollTop($(this).scrollTop() + -60 * delta);
+           return false;
+       });
+   }
+
+
 })(org.util);
 
 
