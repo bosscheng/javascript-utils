@@ -20,6 +20,30 @@ org.utils = org.utils || {}
         var minutes = time.getMinutes();
         var seconds = time.getSeconds();
         return year + "-" + month + "-" + day + " " + hour + ":" + minutes + ":" + seconeds;  
+    },
+    
+    util.client = function(win,userAgent){
+        win = win || window;
+        userAgent = userAgent || navigator.userAgent;
+        
+        this.name = "";
+        this.version = "";
+        this.os = "";
+        this.isMobile = "";
+        this.width = win.screen.width; // 
+        this.height = win.screen.height; // 
+        this.showHeight = "";
+        this.showWidth = "";
+        this.ua = userAgent.toLowerCase();
+        
+        var self = this;
+        // 待定
+        (function(self){
+            var h = [
+                {}
+                ];
+            
+        })(self);
     }
     
 })(org.utils)
