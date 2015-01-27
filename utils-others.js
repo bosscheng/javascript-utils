@@ -676,6 +676,11 @@ org.util = org.util || {};
         }
         
     }
+    
+    // 什么都不做
+    util.doNothing = function(){
+        return true;
+    }
 
 })(org.util);
 
