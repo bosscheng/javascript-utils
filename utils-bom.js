@@ -188,6 +188,17 @@ org.util = org.util || {};
         }
         return eqNum === len;
     }
+    
+    /*
+     * 更新浏览器地址栏链接地址
+        @method updateUrl
+        @param {String} url
+     */
+    util.updateUrl = function(url){
+        if(window.history && window.history.pushState){
+            window.history.pushState(null,url,url);
+        }
+    }
 
 
 })(org.util);
