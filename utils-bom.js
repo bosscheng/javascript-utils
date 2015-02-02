@@ -88,15 +88,16 @@ org.util = org.util || {};
         if (!element) {
             return;
         }
-        // w3c
-        if (element.addEventListener) {
-            element.addEventListener(type, handler, false);
-        }
-
-        // ie
-        else if (element.attachEvent) {
+        
+        // ie, 优先判断是否是ie
+        if (element.attachEvent) {
             element.attachEvent("on" + type, handler);
         }
+        // w3c
+        else if (element.addEventListener) {
+            element.addEventListener(type, handler, false);
+        }
+        
     }
 
     /**
