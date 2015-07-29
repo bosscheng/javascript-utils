@@ -85,7 +85,7 @@ org.util = org.util || {};
      *
      * */
     util.addEvent = function (element, type, handler) {
-        if (!element) {
+        if (!element || element.nodeType !== 1) {
             return;
         }
         
@@ -105,7 +105,7 @@ org.util = org.util || {};
      *     remove event
      * */
     util.removeEvent = function (element, type, handler) {
-        if (!element) {
+        if (!element || element.nodeType !== 1) {
             return;
         }
         // w3c
