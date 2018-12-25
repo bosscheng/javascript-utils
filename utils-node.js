@@ -6,23 +6,21 @@
 
 org.utils = org.utils || {};
 
-;(function(utils){
-    
-    utils.setTimeout = function(funktion,delay){
-        return window.setTimeout(function(){
-            try{
+;(function (utils) {
+
+    utils.setTimeout = function (funktion, delay) {
+        return window.setTimeout(function () {
+            try {
                 funktion();
-            }
-            catch(x){
+            } catch (x) {
                 // 报错！
             }
-            
-        },delay);
+
+        }, delay);
     }
-    
-    
-    
-    var getNowTime = function(){
+
+
+    var getNowTime = function () {
         var time = new Date();
         var year = time.getFullYear();
         var month = time.getMonth() + 1;
@@ -32,27 +30,24 @@ org.utils = org.utils || {};
         var seconds = time.getSeconds();
         return year + '-' + month + '-' + day + " " + hour + ":" + minutes + ":" + seconds;
     }
-    
-    var _log = function(){
-        _showLog("log",arguments);
+
+    var _log = function () {
+        _showLog("log", arguments);
     }
-    
-    var _showLog = function(level,args){
-        if(window.console){
+
+    var _showLog = function (level, args) {
+        if (window.console) {
             var logger = window.console[level];
-            iftypeof logger === "Function")｛
-                logger.apply(window.console,args);
-            ｝
-            
+            if (typeof logger === "Function") {
+                logger.apply(window.console, args);
+            }
         }
     }
-    
-    utils.log = function(){
+
+    utils.log = function () {
         var currentTime = "[" + getNowTime() + "]";
-        _log(currentTime,arguments);
+        _log(currentTime, arguments);
     }
-    
-    
-    
-    
+
+
 })(org.utils);
