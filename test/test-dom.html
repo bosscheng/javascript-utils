@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../src/utils-dom.js"></script>
+</head>
+<body>
+
+<div id="test1" class="test1 test2"></div>
+
+<script>
+    var test1 = document.querySelector('#test1');
+    var result = org.util.hasClass(test1, 'test');
+    console.log(result);
+    var result2 = org.util.hasClass(test1, 'test1');
+    console.log(result2);
+
+    org.util.addClass(test1, 'test3 test4');
+    org.util.removeClass(test1, 'test1 test2');
+</script>
+</body>
+</html>
