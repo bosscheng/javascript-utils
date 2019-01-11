@@ -79,6 +79,23 @@ org.util = org.util || {};
         arguments.callee.iframe.src = url;
     }
 
+
+    // create script
+    util.createScript = function (src, callback) {
+        var script = document.createElement("script");
+        script.setAttribute('src', src);
+        document.body && document.body.appendChild(script);
+    };
+
+    // create link
+    util.createLink = function (src, callback) {
+        let link = document.createElement('link');
+        link.setAttribute('rel', 'stylesheet');
+        link.setAttribute('href', src);
+        link.setAttribute('type', 'type/css');
+        document.querySelector('head').appendChild(link);
+    };
+
     /*
     @param {String} frameName
     */
