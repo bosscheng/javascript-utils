@@ -109,8 +109,7 @@ org.util = org.util || {};
 
         if (year < curYear) {
             timeStr = year + "年" + month + '月' + day + '日' + hour + ':' + minute;
-        }
-        else {
+        } else {
             var pastTime = curDate - date;
             var pastH = pastTime / 3600000;
 
@@ -172,12 +171,12 @@ org.util = org.util || {};
             var result = xmlhttp.responseText;
             if (result) {
                 if (xmlhttp.Status == 200) {
-                    return(true);
+                    return (true);
                 } else {
-                    return(false);
+                    return (false);
                 }
             } else {
-                return(false);
+                return (false);
             }
         }
     }
@@ -192,13 +191,11 @@ org.util = org.util || {};
                 // create XMLHttpRequest object
                 // < IE7
                 return new ActiveXObject('Microsoft.XMLHTTP');
-            }
-            catch (e) {
+            } catch (e) {
                 // > IE7
                 return new ActiveXObject('Msxml3.XMLHTTP');
             }
-        }
-        catch (e) {
+        } catch (e) {
             // IE7 and another browser
             return new XMLHttpRequest();
         }
@@ -241,7 +238,7 @@ org.util = org.util || {};
      *  计算当前触发元素到文档的距离
      * */
     var getPageCoord = util.getPageCoord = function (element) {
-        var coord = { X: 0, Y: 0 };
+        var coord = {X: 0, Y: 0};
         // 计算从当前触发元素到根节点为止，
         // 各级 offsetParent 元素的 offsetLeft 或 offsetTop 值之和
         while (element) {
@@ -378,7 +375,7 @@ org.util = org.util || {};
      * $ 检查ID 检索元素对象
      * */
     util.$ = function (id) {
-        return  !id ? null : document.getElementById(id);
+        return !id ? null : document.getElementById(id);
     }
 
     /*
@@ -434,9 +431,7 @@ org.util = org.util || {};
 
         if (util.isArray(obj) || util.isString(obj)) {
             return obj.length;
-        }
-
-        else if (util.isObject(obj)) {
+        } else if (util.isObject(obj)) {
             for (key in obj) {
                 if (!ownPropsOnly || obj.hasOwnProperty(key)) {
                     count++;
@@ -513,173 +508,181 @@ org.util = org.util || {};
             }
         }
     }
-    
+
     /**
-        @dec
-            获取时间:
-            依赖于类库 （moment）
-        @param {int} type : data(1),week(2),month(3),quarter(4)； default 1
-        @return {Object} 格式化的时间 json 格式
-    */
-    util.getDate = function(type){
+     @dec
+     获取时间:
+     依赖于类库 （moment）
+     @param {int} type : data(1),week(2),month(3),quarter(4)； default 1
+     @return {Object} 格式化的时间 json 格式
+     */
+    util.getDate = function (type) {
         var startDate = parseInt(moment().format('YYYY-MM-DD'));
         var endDate = parseInt(moment().format('YYYY-MM-DD'));
-        if(type){
+        if (type) {
             // 如果是星期
-            if(type === 2){
+            if (type === 2) {
                 // 今天是星期几？ （0-6）
                 var today = parseInt(moment().format('d'));
                 // 星期一
-                if(today === 1){
+                if (today === 1) {
                     startDate = parseInt(moment().format('YYYY-MM-DD'));
+                } else if (today === 0) {
+                    startDate = parseInt(moment().subtract('days', (today + 7) - 1).format('YYYY-MM-DD'));
+                } else {
+                    startDate = parseInt(moment().subtract('days', today - 1).format('YYYY-MM-DD'));
                 }
-                else if(today === 0){
-                    startDate = parseInt(moment().subtract('days',(today + 7) -1).format('YYYY-MM-DD'));
-                }
-                else{
-                    startDate = parseInt(moment().subtract('days',today -1).format('YYYY-MM-DD'));
-                }
-                
+
                 endDate = parseInt(moment().format('YYYY-MM-DD'));
             }
             // 如果是当月
-            else if(type === 3){
-                 // 今天是几号？ （1-31）
+            else if (type === 3) {
+                // 今天是几号？ （1-31）
                 var today = parseInt(moment().format('D'));
                 // 如果是1号
-                if(today === 1){
+                if (today === 1) {
                     startDate = parseInt(moment().format('YYYY-MM-DD'));
+                } else {
+                    startDate = parseInt(moment().subtract('days', today - 1).format('YYYY-MM-DD'));
                 }
-                else{
-                    startDate = parseInt(moment().subtract('days',today -1).format('YYYY-MM-DD'));
-                }
-                
+
                 endDate = parseInt(moment().format('YYYY-MM-DD'));
             }
             // 如果是当前季度
-            else if(type === 4){
-                 // 当月是第几个月
+            else if (type === 4) {
+                // 当月是第几个月
                 var month = parseInt(moment().format('M'));
                 var year = parseInt(moment().format('YYYY'));
-                
+
                 var startYear = null;
                 var startMonth = null;
-                
-                if(month >= 3){
+
+                if (month >= 3) {
                     startMonth = month - 2;
-                    if(startMonth < 10){
+                    if (startMonth < 10) {
                         startMonth = '0' + startMonth;
                     }
                     startDate = year + '-' + startMonth + '-' + '01';
-                    
+
                 }
                 // 如果是一月 或者二月，那么开始的月就是去年了。
-                else{
-                     startYear = year - 1;
-                     startMonth = 12 + (month - 2);
-                    if(startMonth < 10){
+                else {
+                    startYear = year - 1;
+                    startMonth = 12 + (month - 2);
+                    if (startMonth < 10) {
                         startMonth = '0' + startMonth;
                     }
                     startDate = year + '-' + startMonth + '-' + '01';
-                    
+
                 }
                 endDate = parseInt(moment().format('YYYY-MM-DD'));
             }
         }
         // 
-        return {"srartDate":startDate,"endDate":endDate};
+        return {"srartDate": startDate, "endDate": endDate};
     }
     /*
     设置http请求头
     */
-    util.setHandler = function(xhr,headers){
-        if(headers){
-            for(var headerName in headers){
-                if(headerName.toLowCase() === "content-type"){
+    util.setHandler = function (xhr, headers) {
+        if (headers) {
+            for (var headerName in headers) {
+                if (headerName.toLowCase() === "content-type") {
                     continue;
                 }
-                xhr.setRequestHeader(headerName,headers[headerName]);
+                xhr.setRequestHeader(headerName, headers[headerName]);
             }
         }
-        
+
     }
-    
+
     /*
     将参数格式化成array对象。
     */
-    util.convertToArray = function(options){
-        if(util.isString(options)){
-            try{
+    util.convertToArray = function (options) {
+        if (util.isString(options)) {
+            try {
                 return JSON.parse(options);
-            }
-            catch(e){
+            } catch (e) {
                 throw e;
             }
         }
-        if(util.isArray(options)){
+        if (util.isArray(options)) {
             return options;
         }
-        
-        if(util.isUndefined(options) || options === null){
+
+        if (util.isUndefined(options) || options === null) {
             return [];
         }
-        
-        if(options instanceof Object){
+
+        if (options instanceof Object) {
             return [options];
         }
         throw "Conversion Error " + options + ",typeof " + (typeof options);
     }
-    
+
     /*
         mix 最小化
     */
-    util.mix = function(r,s,wl){
+    util.mix = function (r, s, wl) {
         // 复制所有的属性
-        for(var p in s){
-            if(s.hasOwnProperty(p)){
-                if(wl && util.indexOf(wl,p) === -1){
+        for (var p in s) {
+            if (s.hasOwnProperty(p)) {
+                if (wl && util.indexOf(wl, p) === -1) {
                     continue;
                 }
                 // 在 iphone 1 代等设备的Safari中，prototype也会被枚举出来，这里要过滤掉。
-                if(p!== "prototype"){
-                    r[p] = s[p]; 
+                if (p !== "prototype") {
+                    r[p] = s[p];
                 }
             }
         }
     }
-    
+
     /*
         驼峰转下划线
     */
-    util.camelToUnderscore = function(str){
-        return str.replace(/([A-Z])/g,function($0,$1){
+    util.camelToUnderscore = function (str) {
+        return str.replace(/([A-Z])/g, function ($0, $1) {
             return '_' + $1.toLowerCase();
         })
     }
-    
+
     // 获取被被加载的host
-    util.getHostBySelf = function(id){
+    util.getHostBySelf = function (id) {
         var scripts = document.getElementsByTagName("script");
         var selfSctipt = document.getElementById(id) || scripts[scripts.length - 1];
-        var url = selfScript.hasAttribute ? selfScript.src : selfScript.getAttribute("src",4);
-        var arr =url.split("//");
+        var url = selfScript.hasAttribute ? selfScript.src : selfScript.getAttribute("src", 4);
+        var arr = url.split("//");
         return arr[0] + '//' + arr[1].split('/')[0];
     }
-    
+
     // 根据name获取到对应name的value
-    util.fieldValue = function(object,name){
-        try{
+    util.fieldValue = function (object, name) {
+        try {
             return object[name];
-        }
-        catch(e){
+        } catch (e) {
             return undefined;
         }
-        
+
     }
-    
+
     // 什么都不做
-    util.doNothing = function(){
+    util.doNothing = function () {
         return true;
+    };
+
+    // once
+    util.once = function (fn, context) {
+        var result;
+
+        return function () {
+            if (fn) {
+                result = fn.apply(context || this, arguments);
+                fn = null;
+            }
+            return result;
+        }
     }
 
 })(org.util);
