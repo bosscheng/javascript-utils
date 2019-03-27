@@ -4,7 +4,6 @@
 
 ## browser 方面
 
-
 ## dom 方面
 
 ## is系列
@@ -15,7 +14,9 @@
 
 ## node 方面
 
-
 ## web 方面
 
 ##  others 方面
+
+## time 方法
+
