@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../src/utils-curry.js"></script>
+<script>
+
+    var test = function () {
+        var args = Array.prototype.slice.call(arguments);
+        console.log(args);
+    };
+
+    test('a', 'b', 'c');
+
+
+    function multiFn(a, b, c) {
+        return a * b * c;
+    }
+
+    var multi = curry(multiFn);
+
+    //
+    console.log(multi(2)(3)(4));
+
+    console.log(multi(2,3,4));
+
+    console.log(multi(2)(3,4));
+
+    console.log(multi(2,3)(4));
+
+
+
+</script>
+</body>
+</html>

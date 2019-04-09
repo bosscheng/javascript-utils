@@ -4,13 +4,10 @@
  * Data: 14-12-10
  */
 
-var org = {};
 
-org.util = {};
+var Aspect = function () {
 
-org.util.Aspect = function () {
-
-}
+};
 
 /*
  *
@@ -22,7 +19,7 @@ org.util.Aspect = function () {
  *
  * PS： 可以通过在callback中return false来阻止原函数的执行
  * */
-org.util.Aspect.prototype.before = function (methodName, callback, context) {
+Aspect.prototype.before = function (methodName, callback, context) {
     // 上下文变成了this对象，传递参数 before，methodName, callback, context
     return weave.call(this, "before", methodName, callback, context);
 }
@@ -34,7 +31,7 @@ org.util.Aspect.prototype.before = function (methodName, callback, context) {
  * 如果传入了 context 参数，则 callback 里的 this 指向 context。
  * */
 
-org.util.Aspect.prototype.after = function (methodName, callback, context) {
+Aspect.prototype.after = function (methodName, callback, context) {
     // 上下文变成了this对象，传递参数 after，methodName,callback,context
     return weave.call(this, "after", methodName, callback, context);
 }
@@ -96,10 +93,10 @@ function wrap(methodName) {
 
 
 // mix 'aspect' to object instance of Class function
-org.util.Aspect.mixTo = function (receiver) {
+Aspect.mixTo = function (receiver) {
     receiver = receiver.prototype || receiver;
     // 原型
-    var proto = org.util.Aspect.prototype;
+    var proto = Aspect.prototype;
     // 遍历 属性
     for (var p in proto) {
         // 判断是否是自己的属性还是原型链上面继承过来的属性
@@ -107,4 +104,5 @@ org.util.Aspect.mixTo = function (receiver) {
             receiver[p] = proto[p];
         }
     }
-}
+};
+

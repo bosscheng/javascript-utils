@@ -16,6 +16,7 @@ var instances = {};
 var PopupManager = {
 
     modalFade: true,
+
     modalStack: [],  // modal stack 堆栈信息。
 
     // 获取实例对象

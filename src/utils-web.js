@@ -33,18 +33,4 @@ function clone(object){
 }
 
 
-// fake 方法制成
-function fake(){
-    // 方法支持
-    var methods = ['add','remove'];
-    var args = MaiTong.tempArgs || {};
-    
-    for(var i = 0; i< methods.length;i++){
-        if(args[methods[i]]){
-            // 防止方法被篡改掉
-            MaiTong[method[i]].apply(MaiTong,args[methods[i]]);
-        }
-    }
-}
-
 
