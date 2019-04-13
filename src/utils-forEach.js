@@ -4,6 +4,11 @@
 * desc:
 */
 
+/**
+ *
+ * @param {Object | Array } obj
+ * @param {Function} fn
+ */
 function forEach(obj, fn) {
     if (obj === null || typeof obj === 'undefined') {
         return;
