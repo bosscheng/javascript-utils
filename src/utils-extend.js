@@ -17,3 +17,17 @@ function extend(to, from) {
 
     return to;
 }
+
+
+//
+function extend2(a, b, context) {
+    forEach(b, function assignValue(value, key) {
+        if (thisArg && typeof value === "function") {
+            a[key] = bind(value, context);
+        } else {
+            a[key] = value;
+        }
+    });
+
+    return a;
+}
