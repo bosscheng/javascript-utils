@@ -58,12 +58,31 @@ var isFunctionByNg = function (value) {
     return typeof value === 'function';
 }
 
+
+var isStream = function (value) {
+    return isObject(value) && isFunction(value.pipe);
+};
+
+
+var isURLSearchParams = function (value) {
+    return typeof URLSearchParams !== 'undefined' && value instanceof URLSearchParams;
+}
 /**
  *
  * */
 var isRegExp = function (value) {
     return toString.call(value) === '[object RegExp]';
 }
+
+//
+var isStandardBrowserEnv = function (value) {
+    if (typeof navigator !== 'undefined' && (navigator.product === 'ReactNative' || navigator.product === 'NativeScript' || navigator.product === 'NS')) {
+        return false;
+    }
+
+    return (typeof window !== 'undefined' && typeof document !== 'undefined');
+};
+
 /**
  * @doc function
  * @name var isObject
@@ -99,12 +118,34 @@ var isObject = function (value) {
 var isObjectByNg = function (value) {
     return value !== null && typeof value === "object";
 
-}
+};
 
 // 优先去根据ECMAScript 5的方法
 var isArray = Array.isArray || function (value) {
     return toString.call(value) === '[object Array]';
-}
+};
+
+//
+var isArrayBuffer = function (value) {
+    return toString.call(value) === '[object ArrayBuffer]';
+};
+
+var isFormData = function (value) {
+    return (typeof FormData !== 'undefined') && (value instanceof FormData);
+};
+
+//
+var isArrayBufferView = function (value) {
+    var result;
+    //
+    if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
+        result = ArrayBuffer.isView(value);
+    } else {
+        result = (value) && (value.buffer) && (value.buffer instanceof ArrayBuffer);
+    }
+
+    return result;
+};
 
 /**
  *
@@ -363,6 +404,11 @@ var isArrayLike = function (value) {
     }
 
     return isString(value) || isArray(value) || length === 0 || typeof length === "number" && length > 0 && (length - 1) in value;
+}
+
+
+var isBlob = function (value) {
+    return toString.call(value) === '[Object Blob]';
 }
 
 
