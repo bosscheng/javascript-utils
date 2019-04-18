@@ -348,6 +348,12 @@ var isEmptyObject = function (value) {
     return true;
 }
 
+//
+var isEmptyObject2 = function (value) {
+    return (value && Object.keys(value).length > 0);
+};
+
+
 // 对于 plain object
 // any object or value whose internal [[class]] property is not "[object object]"
 // DOM nodes
