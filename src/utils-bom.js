@@ -96,6 +96,30 @@ var addEvent = function (element, type, handler) {
 
 };
 
+//**
+// use closure
+var addEvent2 = (function () {
+
+    //
+    if (!document.addEventListener) {
+        return function (element, type, handler) {
+            if (!element || element.nodeType !== 1) {
+                return;
+            }
+            element.attachEvent("on" + type, handler);
+        }
+    } else {
+        return function (element, type, handler) {
+            if (!element || element.nodeType !== 1) {
+                return;
+            }
+            element.addEventListener(type, handler, false);
+        }
+    }
+
+})();
+
+
 /**
  * @desc
  *     remove event
