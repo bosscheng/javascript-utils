@@ -103,4 +103,20 @@ var isMobile = function () {
     var isMobileUserAgent = false;
     this._isMobile = isMobileScreenSize && this.isTouchScreen();
     return this._isMobile;
-}
+};
+
+
+/**
+ * go mobile
+ */
+var goMobile = function () {
+    for (var n = window.navigator.userAgent, i = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPod"], o = true, e = 0, r = i.length; e < r; e++)
+        if (0 < n.indexOf(i[e])) {
+            o = false;
+            break
+        }
+    if (!o) {
+        var w = window.location.href.replace("www", "m");
+        window.location.href = w
+    }
+};
