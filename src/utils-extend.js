@@ -20,14 +20,29 @@ function extend(to, from) {
 
 
 //
-function extend2(a, b, context) {
-    forEach(b, function assignValue(value, key) {
-        if (thisArg && typeof value === "function") {
-            a[key] = bind(value, context);
+function extend2(to, from, context) {
+    forEach(from, function assignValue(value, key) {
+        if (context && typeof value === "function") {
+            to[key] = bind(value, context);
         } else {
-            a[key] = value;
+            to[key] = value;
         }
     });
 
-    return a;
+    return to;
+}
+
+function extend3(to) {
+    // 获取从第二个参数开始后面的参数。
+    var objs = [].slice.call(arguments, 1);
+    var tempObj = {};
+    //
+    for (var i = 0, len = objs.length; i < len; i++) {
+        tempObj = objs[i];
+        for (var prop in tempObj) {
+            to[prop] = tempObj[prop];
+        }
+    }
+
+    return to;
 }
