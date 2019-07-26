@@ -31,6 +31,5 @@ function getQueryString(name, url) {
         } else {
             return key
         }
-
     }
 }
