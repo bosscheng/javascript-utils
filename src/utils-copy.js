@@ -3,6 +3,12 @@ function copy(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 
+// 浅拷贝
+// let copy1 = {...obj}
+function copy2(obj) {
+    return Object.assign({}, obj);
+}
+
 
 // 深拷贝
 function deepCopy(obj) {

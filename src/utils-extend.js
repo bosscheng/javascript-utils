@@ -18,7 +18,6 @@ function extend(to, from) {
     return to;
 }
 
-
 //
 function extend2(to, from, context) {
     forEach(from, function assignValue(value, key) {
