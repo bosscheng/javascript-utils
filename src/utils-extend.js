@@ -45,3 +45,8 @@ function extend3(to) {
 
     return to;
 }
+
+
+function extend4(subClass, superclass, overrides, staticOverrides) {
+
+}

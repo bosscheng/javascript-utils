@@ -102,6 +102,28 @@ var isObject = function (value) {
 }
 
 /**
+ * isObject({}) => true
+ * isObject([1, 2, 3]) => true
+ * isObject(Function) => true
+ * isObject(null) => false
+ */
+var isObject2 = function (value) {
+    let type = typeof value;
+
+    return value !== null && (type === 'object' || type === 'function');
+}
+
+/**
+ * isObjectLike({}) => true
+ * isObjectLike([1, 2, 3]) => true
+ * isObjectLike(Function) => false
+ * isObjectLike(null) => false
+ */
+var isObjectLike = function (value) {
+    return typeof value === 'object' && value !== null;
+};
+
+/**
  * @desc function
  * @name var isObjectByNg
  *
@@ -213,9 +235,17 @@ var isNumber = function (value) {
 /**
  *
  * */
-var isFinite = function (value) {
+var _isFinite = function (value) {
     return isNumber(value) && isFinite(value);
-}
+};
+
+/**
+ * isNil(null) => true
+ * isNil() => true
+ */
+var isNil = function (value) {
+    return value === null || value === undefined;
+};
 
 /**
  *
@@ -254,6 +284,10 @@ var isDate = function (value) {
     return toString.call(value) === "[object Date]"
 }
 
+var isError = function (value) {
+    return toString.call(value) === '[object Error]';
+}
+
 
 /**
  *
@@ -277,6 +311,10 @@ var isNull = function (value) {
  * */
 var isUndefined = isUndefinedByJquery = function (value) {
     return value === void 0;
+}
+
+var isUndefined2 = function (value) {
+    return value === undefined;
 }
 
 /**
@@ -410,6 +448,10 @@ var isArrayLike = function (value) {
     }
 
     return isString(value) || isArray(value) || length === 0 || typeof length === "number" && length > 0 && (length - 1) in value;
+};
+
+var isArrayLike2 = function (value) {
+    return value !== null && typeof value !== "function" && isFinite(value.length);
 }
 
 
@@ -694,6 +736,16 @@ var isType = function (type) {
     return function (obj) {
         return Object.prototype.toString.call(obj) === "[object " + type + "]"
     }
+};
+
+var toString = {}.toString;
+var isType2 = function (value, type) {
+    return toString.call(value) === '[object ' + type + ']';
+};
+
+// get type
+var getType = function (value) {
+    return toString.call(value).replace(/^\[object/, '').replace(/\]$/, '');
 };
 
 
