@@ -18,7 +18,7 @@ var AP = Array.prototype;
  * */
 var isString = function (value) {
     return toString.call(value) === '[object String]';
-}
+};
 
 /**
  * @doc function
@@ -34,13 +34,13 @@ var isString = function (value) {
  * */
 var isStringByNg = function (value) {
     return typeof value === "string";
-}
+};
 /**
  *
  * */
 var isFunction = function (value) {
     return toString.call(value) === '[object Function]';
-}
+};
 
 /**
  * @doc function
@@ -56,7 +56,7 @@ var isFunction = function (value) {
  * */
 var isFunctionByNg = function (value) {
     return typeof value === 'function';
-}
+};
 
 
 var isStream = function (value) {
@@ -66,13 +66,13 @@ var isStream = function (value) {
 
 var isURLSearchParams = function (value) {
     return typeof URLSearchParams !== 'undefined' && value instanceof URLSearchParams;
-}
+};
 /**
  *
  * */
 var isRegExp = function (value) {
     return toString.call(value) === '[object RegExp]';
-}
+};
 
 //
 var isStandardBrowserEnv = function (value) {
@@ -99,7 +99,7 @@ var isStandardBrowserEnv = function (value) {
  * */
 var isObject = function (value) {
     return value === Object(value);
-}
+};
 
 /**
  * isObject({}) => true
@@ -111,7 +111,7 @@ var isObject2 = function (value) {
     let type = typeof value;
 
     return value !== null && (type === 'object' || type === 'function');
-}
+};
 
 /**
  * isObjectLike({}) => true
@@ -174,7 +174,7 @@ var isArrayBufferView = function (value) {
  * */
 var now = Date.now || function () {
     return new Date().getTime();
-}
+};
 
 // is a given value a DOM element?
 /*
@@ -182,7 +182,7 @@ var now = Date.now || function () {
  * */
 var isElement = function (value) {
     return !!(value && value.nodeType === 1);
-}
+};
 
 /**
  * @doc function
@@ -201,14 +201,14 @@ var isElement = function (value) {
     // 对于 nodeName 是原生态的方法
     // 对于 方法 on  和 find　是 jquery 所拥有的
     return (value && (value.nodeName || (node.on && node.find)));
-}
+};
 
 /**
  *
  * */
 var isArguments = function (value) {
-    return toString.call(value) === "[object Arguments]"
-}
+    return toString.call(value) === "[object Arguments]";
+};
 
 /**
  * @doc function
@@ -224,14 +224,14 @@ var isArguments = function (value) {
  * */
 var isNumberByNg = function (value) {
     return typeof value === "number";
-}
+};
 /**
  *
  *
  * */
 var isNumber = function (value) {
     return toString.call(value) === "[object Number]";
-}
+};
 /**
  *
  * */
@@ -252,21 +252,21 @@ var isNil = function (value) {
  * */
 var isNaN = function (value) {
     return value !== value;
-}
+};
 
 /**
  *
  * */
 var isBoolean = function (value) {
     return value === true || value === false || toString.call(value) === "[object Boolean]";
-}
+};
 
 /**
  *
  * */
 var isBooleanByNg = function (value) {
     return typeof value === 'boolean';
-}
+};
 
 /**
  * @doc function
@@ -281,12 +281,12 @@ var isBooleanByNg = function (value) {
  *
  * */
 var isDate = function (value) {
-    return toString.call(value) === "[object Date]"
-}
+    return toString.call(value) === "[object Date]";
+};
 
 var isError = function (value) {
     return toString.call(value) === '[object Error]';
-}
+};
 
 
 /**
@@ -294,7 +294,7 @@ var isError = function (value) {
  * */
 var isNull = function (value) {
     return value === null;
-}
+};
 
 /**
  * @doc  function
@@ -311,11 +311,11 @@ var isNull = function (value) {
  * */
 var isUndefined = isUndefinedByJquery = function (value) {
     return value === void 0;
-}
+};
 
 var isUndefined2 = function (value) {
     return value === undefined;
-}
+};
 
 /**
  * @doc  function
@@ -332,7 +332,7 @@ var isUndefined2 = function (value) {
  * */
 var isUndefinedByNg = function (value) {
     return typeof value === "undefined";
-}
+};
 
 /**
  * @doc  function
@@ -349,12 +349,12 @@ var isUndefinedByNg = function (value) {
  * */
 var isDefined = function (value) {
     return !isUndefinedByNg(value);
-}
+};
 
 // 借鉴 jquery的实现。
 var isWindow = function (value) {
     return value && typeof value === "object" && "setInterval" in value;
-}
+};
 
 /**
  * @doc  function
@@ -370,12 +370,12 @@ var isWindow = function (value) {
  * */
 var isWindowByNg = function (value) {
     return value && value.document && value.location && value.alert && value.setInterval;
-}
+};
 
 // 借鉴 jquery的实现
 var isWindowNew = function (value) {
     return value !== null && value === value.window;
-}
+};
 
 // is empty object
 var isEmptyObject = function (value) {
@@ -384,7 +384,7 @@ var isEmptyObject = function (value) {
         return false;
     }
     return true;
-}
+};
 
 //
 var isEmptyObject2 = function (value) {
@@ -406,7 +406,7 @@ var isPlainObject = function (value) {
     }
 
     return true;
-}
+};
 
 /**
  * @doc function
@@ -421,7 +421,7 @@ var isPlainObject = function (value) {
  * */
 var isFile = function (value) {
     return toString.call(value) === '[object File]';
-}
+};
 
 /**
  * @doc function
@@ -452,12 +452,12 @@ var isArrayLike = function (value) {
 
 var isArrayLike2 = function (value) {
     return value !== null && typeof value !== "function" && isFinite(value.length);
-}
+};
 
 
 var isBlob = function (value) {
     return toString.call(value) === '[Object Blob]';
-}
+};
 
 
 /*
@@ -466,9 +466,9 @@ var isBlob = function (value) {
 var isDigit = function (value) {
     var pattern = /^[0-9]*$/;
     if (pattern.exec(value) === null || value === "") {
-        return false
+        return false;
     } else {
-        return true
+        return true;
     }
 };
 
@@ -512,7 +512,7 @@ var isUrlSameOrigin = function () {
             pathname: (urlParsingNode.pathname.charAt(0) === '/') ?
                 urlParsingNode.pathname :
                 '/' + urlParsingNode.pathname
-        }
+        };
     }
 
     originUrl = resolveUrl(window.location.href);
@@ -521,7 +521,7 @@ var isUrlSameOrigin = function () {
     return function (requestUrl) {
         var paresd = (isString(requestUrl) ? resolveUrl(requestUrl) : requestUrl);
         return paresd.protocol === originUrl.protocol && paresd.host === originUrl.host;
-    }
+    };
 
 }();
 
@@ -592,7 +592,7 @@ var isEqual = function (a, b) {
 
     // 其他情况都返回false，以避免误判导致change 事件没有发生。
     return false;
-}
+};
 
 /**
  *
@@ -628,7 +628,7 @@ var isEmptyObjectByArale = function (object) {
         }
     }
     return true;
-}
+};
 /**
  * Detect the JScript [[DontEnum]] bug:
  * In IE < 9 an objects own properties, shadowing non-enumerable ones, are
@@ -687,6 +687,23 @@ var isPlainObject = function (object) {
     return key === undefined || hasOwn.call(object, key);
 };
 
+// 表示 attrs 拥有的属性，是否obj 也拥有，且值相等。
+var isMatch = function (obj, attrs) {
+    const _keys = Object.keys(attrs);
+    const length = _keys.length;
+    if (!obj) {
+        return false;
+    }
+    for (let i = 0; i < length; i++) {
+        const key = _keys[i];
+        if (attrs[key] !== obj[key] || (!key in obj)) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
 
 /*
  判断浏览器
@@ -694,36 +711,36 @@ var isPlainObject = function (object) {
 // 是否是IE
 var isIE = function () {
     return navigator.userAgent.indexOf("MSIE") > 0;
-}
+};
 
 var isIE6 = function () {
     return navigator.userAgent.indexOf("MSIE 6.0") > 0;
-}
+};
 
 var isIE7 = function () {
     return navigator.userAgent.indexOf("MSIE 7.0") > 0;
-}
+};
 
 var isIE8 = function () {
     return navigator.userAgent.indexOf("MSIE 8.0") > 0;
-}
+};
 
 var isIE9 = function () {
     return navigator.userAgent.indexOf("MSIE 9.0") > 0;
-}
+};
 
 var isIE10 = function () {
     return navigator.userAgent.indexOf("MSIE 10.0") > 0;
-}
+};
 
 var isIE11 = function () {
     return navigator.userAgent.indexOf("MSIE 11.0") > 0;
-}
+};
 
 var isChrome = function () {
     // 这样存在问题的， 很多内核都是使用的chrome内核， 会导致判断不准确。
     return navigator.userAgent.indexOf("Chrome") > 0;
-}
+};
 
 var isFirefox = function () {
     return navigator.userAgent.indexOf("Firefox") > 0;
@@ -734,8 +751,8 @@ var isFirefox = function () {
  * */
 var isType = function (type) {
     return function (obj) {
-        return Object.prototype.toString.call(obj) === "[object " + type + "]"
-    }
+        return Object.prototype.toString.call(obj) === "[object " + type + "]";
+    };
 };
 
 var toString = {}.toString;

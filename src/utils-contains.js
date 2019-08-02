@@ -5,100 +5,100 @@
 *
 */
 
-function isNumber (value) {
-    return Object.prototype.toString.call(value) === '[object Number]'
+function isNumber(value) {
+    return Object.prototype.toString.call(value) === '[object Number]';
 }
 
-function isDate (value) {
-    return Object.prototype.toString.call(value) === '[object Date]'
+function isDate(value) {
+    return Object.prototype.toString.call(value) === '[object Date]';
 }
 
-function isRegExp (value) {
-    return Object.prototype.toString.call(value) === '[object RegExp]'
+function isRegExp(value) {
+    return Object.prototype.toString.call(value) === '[object RegExp]';
 }
 
-function isFunction (value) {
-    return typeof value === 'function'
+function isFunction(value) {
+    return typeof value === 'function';
 }
 
-function equals (o1, o2) {
-    var t1 = typeof o1
+function equals(o1, o2) {
+    var t1 = typeof o1;
 
-    var t2 = typeof o2
+    var t2 = typeof o2;
 
-    var length
+    var length;
 
-    var key
+    var key;
 
-    var keySet = {}
+    var keySet = {};
 
     if (o1 === null || o2 === null) {
-        return false
+        return false;
     }
 
     if (o1 === o2) {
-        return true
+        return true;
     }
 
     if (t1 === t2 && t1 === 'object') {
         // 数组
         if (Array.isArray(o1)) {
             if (!Array.isArray(o2)) {
-                return false
+                return false;
             }
 
             // 数组对象遍历比较
             if ((length = o1.length) == o2.length) {
                 for (key = 0; key < length; key++) {
                     if (!equals(o1[key], o2[key])) {
-                        return false
+                        return false;
                     }
                 }
-                return true
+                return true;
             }
         }
         // 日期
         else if (isDate(o1)) {
             if (!isDate(o2)) {
-                return false
+                return false;
             }
 
             // 时间戳相同则算相等
-            return equals(o1.getTime(), o2.getTime())
+            return equals(o1.getTime(), o2.getTime());
         }
         // 正则
         else if (isRegExp(o1)) {
             if (!isRegExp(o2)) {
-                return false
+                return false;
             }
 
-            return o1.toString() == o2.toString()
+            return o1.toString() == o2.toString();
         }
         // 对象
         else {
             // 先遍历o1，function不比较，略过
             for (key in o1) {
                 if (isFunction(o1[key])) {
-                    continue
+                    continue;
                 }
 
                 if (!equals(o1[key], o2[key])) {
-                    return false
+                    return false;
                 }
 
-                keySet[key] = true
+                keySet[key] = true;
             }
 
             // 再遍历o2，如果o2没有多余的属性，则算相等
             for (key in o2) {
                 if (!keySet.hasOwnProperty(key) && o2[key] !== undefined && !isFunction(o2[key])) {
-                    return false
+                    return false;
                 }
             }
-            return true
+            return true;
         }
     }
-    return false
+    return false;
 }
 
 
@@ -110,7 +110,7 @@ function equals (o1, o2) {
  * @param objProperty
  * @returns {boolean}
  */
-function contains (array, obj, arrayProperty, objProperty) {
+function contains(array, obj, arrayProperty, objProperty) {
     var i = 0;
 
     var length;
@@ -119,7 +119,7 @@ function contains (array, obj, arrayProperty, objProperty) {
     if (arrayProperty && objProperty) {
         for (length = array.length; i < length; i++) {
             if (array[i][arrayProperty] === obj[objProperty]) {
-                return true
+                return true;
             }
         }
     }
@@ -127,10 +127,21 @@ function contains (array, obj, arrayProperty, objProperty) {
     else {
         for (length = array.length; i < length; i++) {
             if (equals(array[i], obj)) {
-                return true
+                return true;
             }
         }
     }
 
-    return false
+    return false;
+}
+
+var indexOf = Array.prototype.indexOf;
+
+//
+function contains2(arr, value) {
+    if (!Array.isArray(arr)) {
+        return false;
+    }
+
+    return indexOf.call(arr, value) > -1;
 }
