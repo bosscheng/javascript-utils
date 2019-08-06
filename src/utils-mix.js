@@ -1,6 +1,6 @@
 /*
 * date: 2019-08-01
-* desc:
+* desc: mix 合并
 */
 function _mix(dist, obj) {
     for (var key in obj) {
