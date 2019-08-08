@@ -11,7 +11,7 @@
  * @param element
  * @returns {{top: number, left: number, bottom: number, right: number}}
  */
-function gGetRect(element) {
+function getBoundingClientRect(element) {
 
     var rect = element.getBoundingClientRect();
     // 在IE中，默认坐标从(2,2)开始计算，导致最终距离比其他浏览器多出两个像素，我们需要做个兼容
