@@ -1,15 +1,3 @@
-// 浅拷贝
-function copy(obj) {
-    return JSON.parse(JSON.stringify(obj));
-}
-
-// 浅拷贝
-// let copy1 = {...obj}
-function copy2(obj) {
-    return Object.assign({}, obj);
-}
-
-
 // 深拷贝
 function deepCopy(obj) {
     var result;
@@ -26,9 +14,6 @@ function deepCopy(obj) {
     return result;
 }
 
-function find(list, f) {
-    return list.filter(f)[0];
-}
 
 /**
  *  Deep copy the given object considering circular structure.
@@ -42,6 +27,10 @@ function deepCopy2(obj, cache = []) {
 
     if (obj === null || typeof obj !== 'object') {
         return obj;
+    }
+
+    function find(list, f) {
+        return list.filter(f)[0];
     }
 
     // if obj is hit,it is in circular structure

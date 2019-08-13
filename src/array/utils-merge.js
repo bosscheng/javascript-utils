@@ -30,6 +30,7 @@ function merge() {
 }
 
 
+//
 function merge2(dataArray) {
     let result = [];
 

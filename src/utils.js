@@ -39,7 +39,7 @@ var keys = Object.keys || function (o) {
         }
     }
     return ret;
-}
+};
 
 /**
  * has
@@ -61,7 +61,7 @@ var random = function (min, max) {
         min = 0;
     }
     return min + Math.floor(Math.random() * (max - min + 1));
-}
+};
 
 /**
  * indexOf
@@ -80,7 +80,7 @@ var indexOf = AP.indexOf ?
             }
         }
         return -1;
-    }
+    };
 /**
  *
  * */
@@ -94,10 +94,10 @@ var map = AP.map ?
         var ret = [];
         forEach(arr, function (item, i, arr) {
             // 讲执行完之后的结果，从新存储进去。
-            ret.push(fn(item, i, arr))
-        })
+            ret.push(fn(item, i, arr));
+        });
         return ret;
-    }
+    };
 
 /**
  *
@@ -115,7 +115,7 @@ var filter = AP.filter ?
             if (fn(item, i, arr)) {
                 ret.push(item);
             }
-        })
+        });
         return ret;
     };
 
@@ -172,7 +172,7 @@ var getStyle = function (oElm, strCssRule) {
     }
     //
     return strValue;
-}
+};
 
 /**
  * @desc
@@ -199,7 +199,7 @@ var numberFormat = function (number, decimals, decPoint, thousandsSep) {
     var toFixedFix = function (n, prec) {
         var k = Math.pow(10, prec);
         return '' + Math.ceil(n * k) / k;
-    }
+    };
 
     // 将数字变成数组 [0] 表示整数，[1]表示分数
     s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
@@ -217,7 +217,7 @@ var numberFormat = function (number, decimals, decPoint, thousandsSep) {
     }
     // 将数组转义成字符串
     return s.join(dec);
-}
+};
 
 /**
  * 全角转化为半角函数
@@ -237,7 +237,7 @@ var toCDB = function (str) {
         }
     }
     return result;
-}
+};
 /**
  *  半角转化为全角
  * */
@@ -255,7 +255,7 @@ var toDBC = function (str) {
         }
     }
     return result;
-}
+};
 
 /*
  * 全角半角的转换
@@ -273,7 +273,7 @@ var chgCase = function (sStr, iCase) {
         return toCDB(sStr);
     }
 
-}
+};
 
 
 /*
@@ -289,7 +289,7 @@ var isMouseOut = function (e, handler) {
         reltg = reltg.parentNode;
     }
     return (reltg !== handler);
-}
+};
 
 
 /*
@@ -303,7 +303,7 @@ var getViewSize = function () {
     var viewW = de.clientWidth == 0 ? db.clientWidth : de.clientWidth;
     var viewH = de.clientHeight == 0 ? db.clientHeight : de.clientHeight;
     return [viewW, viewH];
-}
+};
 
 /*
  * 实现utf8解码
@@ -331,7 +331,7 @@ var utf8Decode = function (str_data) {
     }
 
     return tmp_arr.join('');
-}
+};
 
 /*
  * base64 解码（依赖utf8解码）
@@ -363,7 +363,7 @@ var base64Decode = function (data) {
     dec = tmp_arr.join('');
     dec = utf8Decode(dec);
     return dec;
-}
+};
 
 /*
  * 金额大写转换函数
@@ -432,7 +432,7 @@ var transform = function (tranvalue) {
         return "0元";
     }
     return str;
-}
+};
 
 //拆分整数与小数
 function splits(tranvalue) {
@@ -452,18 +452,18 @@ var vbScript = function () {
     try {
         var script = document.getElementById("K1").value;
         if (script.trim() == "") return;
-        window.execScript('On Error Resume Next \n' + script + '\n If Err.Number<>0 Then \n MsgBox "请输入正确的VBScript脚本!",48,"脚本错误!" \n End If', "vbscript")
+        window.execScript('On Error Resume Next \n' + script + '\n If Err.Number<>0 Then \n MsgBox "请输入正确的VBScript脚本!",48,"脚本错误!" \n End If', "vbscript");
     } catch (e) {
         alert(e.message);
     }
-}
+};
 
 /*
  * 清除掉html代码中的脚本
  * */
 var clearScript = function (html) {
     html.value = html.value.replace(/<script.*?>[\s\S]*?<\/script>|\s+on[a-zA-Z]{3,16}\s?=\s?"[\s\S]*?"|\s+on[a-zA-Z]{3,16}\s?=\s?'[\s\S]*?'|\s+on[a-zA-Z]{3,16}\s?=[^ >]+/ig, "");
-}
+};
 
 /*
  * 动态执行javascript 脚本
@@ -474,14 +474,14 @@ var doJS = function (html) {
     } catch (e) {
         alert(e.message);
     }
-}
+};
 
 /*
  * 字符串反序
  * */
 var isReverse = function (text) {
     return text.split('').reverse().join('');
-}
+};
 
 
 /*
@@ -492,21 +492,8 @@ var setSort = function () {
     var text = K1.value.split(/[\r\n]/).sort().join("\r\n");//顺序
     var test = K1.value.split(/[\r\n]/).sort().reverse().join("\r\n");//反序
     K1.value = K1.value != text ? text : test;
-}
+};
 
-/*
- * 清除相同的数组
- * */
-var unique = function (array) {
-    var x = array.split(/[\r\n]+/);
-    var y = '';
-    for (var i = 0; i < x.length; i++) {
-        if (!new RegExp("^" + x.replace(/([^\w])/ig, "\\$1") + "$", "igm").test(y)) {
-            y += x + "\r\n"
-        }
-    }
-    return y
-}
 
 /*
  * 提取页面代码中的所以网址
@@ -515,7 +502,7 @@ var getUrl = function () {
     var aa = document.documentElement.outerHTML.match(/(url\(|src=|href=)[\"\']*([^\"\'\(\)\<\>\[\] ]+)[\"\'\)]*|(http:\/\/[\w\-\.]+[^\"\'\(\)\<\>\[\] ]+)/ig).join("\r\n").replace(/^(src=|href=|url\()[\"\']*|[\"\'\>\) ]*$/igm, "");
 
     return aa;
-}
+};
 
 
 /*
@@ -558,14 +545,14 @@ var getGet = function () {
     if (queryStr[1]) {
         gets = queryStr[1].split('&');
         for (var i = 0; i < gets.length; i++) {
-            tempArr = gets[i].split("=")
+            tempArr = gets[i].split("=");
             key = tempArr[0];
             getArr[key] = tempArr[1];
         }
     }
 
     return getArr;
-}
+};
 
 /**
  * 获取url中的get参数
@@ -582,7 +569,7 @@ var getGetNew = function () {
         }
     }
     return theRequest;
-}
+};
 
 /**
  * 获取url中的get参数
@@ -597,7 +584,7 @@ var getGetNewNew = function () {
         return unescape(r[2]);
     }
     return null;
-}
+};
 
 /*
  * 返回顶部的实现方式
@@ -633,9 +620,9 @@ var backTop = function (btnId) {
     // on scroll 事件
     function set() {
         //
-        btn.style.display = (d.scrollTop + b.scrollTop > 100) ? 'block' : "none"
+        btn.style.display = (d.scrollTop + b.scrollTop > 100) ? 'block' : "none";
     }
-}
+};
 
 /*
  * 全部替换
@@ -654,34 +641,34 @@ var trim = function (str) {
     var reExtraSpace = /^\s*(.*?)\s+$/;
 
     return str.replace(reExtraSpace, '$1');
-}
+};
 
 /*
  * 清除左边外层空格
  * */
 var ltrim = function (str) {
     return str.replace(/^(s*| *)/, '');
-}
+};
 
 /*
  * 去除右边空格
  * */
 var rtrim = function (str) {
     return str.replace(/(s*| *)/, '');
-}
+};
 
 /**
  *
  * */
 var toString = function () {
     return Object.prototype.toString;
-}
+};
 /**
  *
  * */
 var hasOwn = function () {
     return Object.prototype.hasOwnProperty;
-}
+};
 
 
 // 获取当时时间 格式为 xxxx-yy-hh dd:ss:ee
