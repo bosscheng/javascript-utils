@@ -1,16 +1,3 @@
-function find(array, fn) {
-    array = array || [];
-    var result = null;
-    for (var i = 0, len = array.length; i < len; i++) {
-        var item = array[i];
-        if (fn(item)) {
-            result = item;
-            break;
-        }
-    }
-    return result;
-}
-
 var isPlainObject = function (value) {
     if (!isObject(value) || value.nodeType || isWindow(value)) {
         return false;
@@ -39,7 +26,7 @@ var isMatch = function (obj, attrs) {
     return true;
 };
 
-function find2(arr, predicate) {
+function find(arr, predicate) {
     let _predicate;
     if (typeof predicate === 'function') {
         _predicate = predicate;

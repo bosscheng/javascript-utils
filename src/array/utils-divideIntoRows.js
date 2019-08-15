@@ -3,17 +3,20 @@
 * desc:
 *   params: [1,2,3,4,5,6], 3
     return: [[1,2,3], [4.5.6]]
+*
+* @desc
+*     平均分配数组
 */
 
 function divideIntoRows(array, limitOfColumn) {
-    if (!array || !array.length) return []
+    if (!array || !array.length) return [];
     let tempRows = [];
     for (let i = 0; i < array.length / limitOfColumn; i++) {
         let row = [];
         for (let j = 0; j < limitOfColumn; j++) {
-            if (array[i * limitOfColumn + j]) row.push(array[i * limitOfColumn + j])
+            if (array[i * limitOfColumn + j]) row.push(array[i * limitOfColumn + j]);
         }
-        if (row.length) tempRows.push(row)
+        if (row.length) tempRows.push(row);
     }
     return tempRows;
 }

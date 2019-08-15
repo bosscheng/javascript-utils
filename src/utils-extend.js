@@ -5,22 +5,10 @@
 */
 
 
-function extend(to, from) {
-
-    var keys = Object.keys(from);
-
-    var i = keys.length;
-
-    while (i--) {
-        to[keys[i]] = from[keys[i]];
-    }
-
-    return to;
-}
 
 //
-function extend2(to, from, context) {
-    forEach(from, function assignValue(value, key) {
+function extend2(to, _from, context) {
+    forEach(_from, function assignValue(value, key) {
         if (context && typeof value === "function") {
             to[key] = bind(value, context);
         } else {
@@ -31,22 +19,5 @@ function extend2(to, from, context) {
     return to;
 }
 
-function extend3(to) {
-    // 获取从第二个参数开始后面的参数。
-    var objs = [].slice.call(arguments, 1);
-    var tempObj = {};
-    //
-    for (var i = 0, len = objs.length; i < len; i++) {
-        tempObj = objs[i];
-        for (var prop in tempObj) {
-            to[prop] = tempObj[prop];
-        }
-    }
-
-    return to;
-}
 
 
-function extend4(subClass, superclass, overrides, staticOverrides) {
-
-}

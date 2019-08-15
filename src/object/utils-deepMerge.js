@@ -5,7 +5,7 @@
 */
 
 /**
- *
+ * 对象的深度合并。
  */
 function deepMerge() {
     var result = {};
@@ -26,7 +26,10 @@ function deepMerge() {
 
     //
     for (var i = 0, l = arguments.length; i < l; i++) {
-        forEach(arguments[i], assignValue);
+        var item = arguments[i];
+        for (var key in item) {
+            assignValue(item[key], key);
+        }
     }
     return result;
 }

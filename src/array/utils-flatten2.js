@@ -22,9 +22,7 @@ var isArrayLike = function (collection) {
 /**
  * underscore flatten method
  * @param input
- * @param shallow
- * @param strict
- * @param output
+ * @param [shallow]
  * @returns {*}
  */
 var flatten = function (input, shallow, strict, output) {
@@ -52,36 +50,4 @@ var flatten = function (input, shallow, strict, output) {
     return output;
 };
 
-// 只 扁平化一层数组结构。
-var flatten2 = function (arr) {
-    if (!Array.isArray(arr)) {
-        return arr;
-    }
-    let result = [];
-    result.forEach((item) => {
 
-        if (Array.isArray(item)) {
-            item.forEach((subItem) => {
-                result.push(subItem);
-            });
-        } else {
-            result.push(item);
-        }
-    });
-
-    return result;
-};
-
-
-//
-var flattenDeep = function (arr, result = []) {
-    if (!Array.isArray(arr)) {
-        result.push(arr);
-    } else {
-        arr.forEach((item) => {
-            flattenDeep(item, result);
-        });
-    }
-
-    return result;
-};

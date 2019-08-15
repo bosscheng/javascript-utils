@@ -9,14 +9,12 @@ class EventEmitter {
 
     on(type, fn) {
         if (!this.events.get(type)) {
-            this.events.set(type, fn)
+            this.events.set(type, fn);
         }
     }
 
     trigger(type) {
-        let handle = this.events.get(type)
-        handle.apply(this, [...arguments].slice(1))
+        let handle = this.events.get(type);
+        handle.apply(this, [...arguments].slice(1));
     }
-
-
 }
