@@ -3,6 +3,6 @@
 * desc:
 */
 
-function forEachValue(obj, fn) {
+function forEach(obj, fn) {
     Object.keys(obj).forEach(key => fn(obj[key], key));
 }
