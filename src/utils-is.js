@@ -10,42 +10,7 @@ var AP = Array.prototype;
 /**
  * is 判断
  ***/
-
 // 对于 "Arguments" ,"Function" ,'String' ,'Number','Date' ,'RegExp' 这几种类型，可以通过 toString.call(value) === "[object xxx]" 来判断。
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 表示 attrs 拥有的属性，是否obj 也拥有，且值相等。
-var isMatch = function (obj, attrs) {
-    const _keys = Object.keys(attrs);
-    const length = _keys.length;
-    if (!obj) {
-        return false;
-    }
-    for (let i = 0; i < length; i++) {
-        const key = _keys[i];
-        if (attrs[key] !== obj[key] || (!key in obj)) {
-            return false;
-        }
-    }
-
-    return true;
-};
-
-
-
-
-
 
 /**
  * is 判断 开始
