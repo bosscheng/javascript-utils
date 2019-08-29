@@ -1,24 +1,7 @@
 /*
-* author: wancheng
-* date: 2018-12-25
+* date: 2019-08-29
 * desc:
 */
-
-/**
- * @desc
- *
- * @param str
- * @returns {void | string | never}
- */
-function format(str) {
-    var _slice = Array.prototype.slice;
-    var values = _slice.call(arguments, 1);
-
-    return str.replace(/{(\d+)}/g, function (match, number) {
-        return typeof values[number] !== 'undefined' ? values[number].toString() : match;
-    })
-}
-
 /**
  *
  * @param str
