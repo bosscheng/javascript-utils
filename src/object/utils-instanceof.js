@@ -4,7 +4,7 @@
 */
 
 // 思路：右边变量的原型存在于左边变量的原型链上
-function instanceof2(left, right) {
+function _instanceof(left, right) {
     let leftValue = left.__proto__;
     let rightValue = right.prototype;
     while (true) {

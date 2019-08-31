@@ -1,6 +1,5 @@
 /*
-* author: wancheng
-* date: 2019-04-13
+* date: 2019-08-31
 * desc:
 */
 function bind(fn, context) {
@@ -13,9 +12,8 @@ function bind(fn, context) {
     }
 }
 
-
 // 思路：类似call，但返回的是函数
-Function.prototype.bind2 = function (context) {
+Function.prototype._bind = function (context) {
     if (typeof this !== 'function') {
         throw new TypeError('Error')
     }
@@ -31,4 +29,3 @@ Function.prototype.bind2 = function (context) {
         }
     }
 }
-

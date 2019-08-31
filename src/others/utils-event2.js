@@ -18,3 +18,4 @@ class EventEmitter {
         handle.apply(this, [...arguments].slice(1));
     }
 }
+

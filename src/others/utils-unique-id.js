@@ -15,3 +15,13 @@ const uniqueId = (function () {
         return prefix + map[prefix];
     };
 })();
+
+
+/*
+ * 随机数时间戳
+ * */
+var uniqueId = function () {
+    var a = Math.random;
+    var b = parseInt;
+    return Number(new Date()).toString() + b(10 * a()) + b(10 * a()) + b(10 * a());
+};

@@ -1,4 +1,4 @@
-let pipe = require('../src/utils-pipe')
+let pipe = require('../src/object-array/utils-pipe')
 
 
 

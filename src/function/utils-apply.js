@@ -1,10 +1,9 @@
 /*
-* date: 2019-07-28
+* date: 2019-08-31
 * desc:
 */
-
 // 思路：将要改变this指向的方法挂到目标this上执行并返回
-Function.prototype.apply2 = function (context) {
+Function.prototype._apply = function (context) {
     if (typeof this !== 'function') {
         throw new TypeError('not function')
     }
