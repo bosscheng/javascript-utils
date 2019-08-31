@@ -14,3 +14,14 @@ function clone(obj) {
 
     return result;
 }
+
+function clone2(obj) {
+    let result = obj;
+    try {
+        result = JSON.stringify(obj);
+        result = JSON.parse(result);
+    } catch (e) {
+        result = obj;
+    }
+    return result;
+}

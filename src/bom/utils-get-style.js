@@ -9,7 +9,7 @@
  * @param name 样式名
  * @param defaultValue 默认值
  */
-function getStyle(dom, name, defaultValue) {
+function getStyle(dom, name) {
     try {
         if (window.getComputedStyle) {
             return window.getComputedStyle(dom, null)[name];
@@ -17,9 +17,11 @@ function getStyle(dom, name, defaultValue) {
         //
         return dom.currentStyle[name];
     } catch (e) {
-        if (defaultValue) {
-            return defaultValue;
-        }
         return null;
     }
+}
+
+
+function getComputedStyle(el, key) {
+    return el && el.currentStyle ? el.currentStyle[key] : window.getComputedStyle ? window.getComputedStyle(el, void 0).getPropertyValue(key) : el.style[key];
 }
