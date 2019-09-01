@@ -26,6 +26,7 @@ var isMatch = function (obj, attrs) {
     return true;
 };
 
+// find
 function find(arr, predicate) {
     let _predicate;
     if (typeof predicate === 'function') {
