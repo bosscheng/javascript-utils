@@ -4,7 +4,7 @@
 */
 
 // 依赖 getStyle
-function getStyle(dom, name, defaultValue) {
+function getStyle(dom, name) {
     try {
         if (window.getComputedStyle) {
             return window.getComputedStyle(dom, null)[name];
@@ -12,18 +12,24 @@ function getStyle(dom, name, defaultValue) {
         //
         return dom.currentStyle[name];
     } catch (e) {
-        if (defaultValue) {
-            return defaultValue;
-        }
         return null;
     }
 }
 
-
-function getWidth(dom, defaultValue) {
-    let width = getStyle(dom, 'width', defaultValue);
+//
+function getWidth(dom) {
+    let width = getStyle(dom, 'width');
     if (width === 'auto') {
         width = dom.offsetWidth;
     }
     return parseFloat(width);
+}
+
+//
+function getHeight(dom) {
+    let height = getStyle(dom, 'height');
+    if (height === 'auto') {
+        height = dom.offsetHeight;
+    }
+    return parseFloat(height);
 }
