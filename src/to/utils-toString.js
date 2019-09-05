@@ -4,5 +4,5 @@
 */
 
 function toString(value) {
-    return value == null ? '' : value;
+    return value == null ? '' : '' + value;
 }

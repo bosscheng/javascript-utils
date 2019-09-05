@@ -32,19 +32,3 @@ var isObject2 = function (value) {
 
     return value !== null && (type === 'object' || type === 'function');
 };
-
-/**
- *
- * @desction
- * 定义一个参数是否是object类型的，不等同于javascript中的 typeof
- * 对于 ‘null’ 不是对象
- *
- *
- * isObjectLike({}) => true
- * isObjectLike([1, 2, 3]) => true
- * isObjectLike(Function) => false
- * isObjectLike(null) => false
- */
-var isObject3 = function (value) {
-    return typeof value === 'object' && value !== null;
-};
