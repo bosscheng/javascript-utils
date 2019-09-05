@@ -3,5 +3,5 @@
 * desc:
 */
 var isEmptyObject = function (value) {
-    return (value && Object.keys(value).length > 0);
+    return (value && Object.keys(value).length === 0);
 };
