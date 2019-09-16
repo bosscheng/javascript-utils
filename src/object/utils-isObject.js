@@ -32,3 +32,8 @@ var isObject2 = function (value) {
 
     return value !== null && (type === 'object' || type === 'function');
 };
+
+
+var isObject3 = function (value) {
+    return value !== null && typeof value === 'object';
+}

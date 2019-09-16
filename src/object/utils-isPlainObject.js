@@ -19,7 +19,6 @@ var isPlainObject = function (value) {
 };
 
 
-
 var isPlainObject2 = function (object) {
     if (!object || !isObject(object) || object.nodeType || isWindow(object)) {
         return false;
@@ -50,5 +49,11 @@ var isPlainObject2 = function (object) {
     for (key in object) {
     }
     return key === undefined || hasOwn.call(object, key);
+};
+
+
+// vue2.x 版本支持的。
+var isPlainObject3 = function (obj) {
+    return Object.prototype.toString.call(obj) === '[object Object]';
 };
 

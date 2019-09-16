@@ -50,3 +50,13 @@ function remove(arr, predicate) {
 
     return result;
 }
+
+// 删除 item
+function remove3(arr, item) {
+    if (arr.length) {
+        const index = arr.indexOf(item);
+        if (index > -1) {
+            return arr.splice(index, 1);
+        }
+    }
+}
