@@ -7,29 +7,21 @@
  */
 // 是否是IE
 var isIE = function () {
-    return navigator.userAgent.indexOf("MSIE") > 0;
-};
-
-var isIE6 = function () {
-    return navigator.userAgent.indexOf("MSIE 6.0") > 0;
-};
-
-var isIE7 = function () {
-    return navigator.userAgent.indexOf("MSIE 7.0") > 0;
+    let UA = window.navigator.userAgent.toLowerCase();
+    return UA && /msie|trident/.test(UA);
 };
 
 var isIE8 = function () {
-    return navigator.userAgent.indexOf("MSIE 8.0") > 0;
+    let UA = window.navigator.userAgent.toLowerCase();
+    return UA && UA.indexOf('msie 8.0') > 0;
 };
 
 var isIE9 = function () {
-    return navigator.userAgent.indexOf("MSIE 9.0") > 0;
+    let UA = window.navigator.userAgent.toLowerCase();
+    return UA && UA.indexOf('msie 9.0') > 0;
 };
 
-var isIE10 = function () {
-    return navigator.userAgent.indexOf("MSIE 10.0") > 0;
-};
-
-var isIE11 = function () {
-    return navigator.userAgent.indexOf("MSIE 11.0") > 0;
-};
+var isEDGE = function () {
+    let UA = window.navigator.userAgent.toLowerCase();
+    return UA && UA.indexOf('edge/') > 0;
+}

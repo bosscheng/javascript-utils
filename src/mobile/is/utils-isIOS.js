@@ -8,3 +8,8 @@
 var isApple = function () {
     return (/iphone|ipod|ipad|Macintosh/i.test(navigator.userAgent.toLowerCase()));
 }
+
+var isIOS = function () {
+    var UA = window.navigator.userAgent.toLowerCase();
+    return UA && /iphone|ipad|ipod|ios/.test(UA);
+};
