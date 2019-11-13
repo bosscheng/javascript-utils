@@ -25,8 +25,8 @@ function getLastMonth(time) {
     let bStartDate = new Date(bYear, bMonth, 1);
     let bEndDate = new Date(curMonthFirstDay.getTime() - (24 * 3600 * 1000));
 
-    result.start = bStartDate;
-    result.end = bEndDate;
+    result.start = bStartDate.getTime();
+    result.end = bEndDate.getTime();
 
     return result;
 }

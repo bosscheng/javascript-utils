@@ -6,10 +6,18 @@
 
 const getOneTimeRange = (time, options) => {
     options = options || {};
-    if (time) {
-        time = parseInt(time, 10);
+    let date;
+
+    if (!time) {
+        date = new Date();
+    }
+
+    if (typeof time === 'object') {
+        date = time;
     } else {
-        time = new Date();
+        if (('' + time).length === 10) time = parseInt(time) * 1000;
+        time = +time; // 转成int 型
+        date = new Date(time);
     }
 
     let result = {
@@ -17,8 +25,8 @@ const getOneTimeRange = (time, options) => {
         end: 0
     };
 
-    let _startTime = new Date(time).setHours(options.startHour || 0, options.startMin || 0, 0, 0);
-    let _endTime = new Date(time).setHours(options.endHour || 23, options.endMin || 59, 59, 0);
+    let _startTime = new Date(date).setHours(options.startHour || 0, options.startMin || 0, 0, 0);
+    let _endTime = new Date(date).setHours(options.endHour || 23, options.endMin || 59, 59, 0);
     result.start = new Date(_startTime).getTime();
     result.end = new Date(_endTime).getTime();
 

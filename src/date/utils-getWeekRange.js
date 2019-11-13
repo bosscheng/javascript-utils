@@ -9,8 +9,8 @@ function getWeekRange(year, week) {
     time += t;
     d = new Date(time);
     let w = d.getDay();
-    let mon = new Date(time - (w - 1) * 24 * 3600 * 1000);
-    let sun = new Date(time + ((7 - w) * 24 * 3600 * 1000));
+    let mon = new Date(time - (w - 1) * 24 * 3600 * 1000).getTime();
+    let sun = new Date(time + ((7 - w) * 24 * 3600 * 1000)).getTime();
     return {
         mon,
         sun
