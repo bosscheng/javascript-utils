@@ -20,7 +20,7 @@
  *  这使得计数排序对于数据范围很大的数组，需要大量时间和内存。
  * */
 var countingSort = function(array){
-    if (!util.isArray(array)) {
+    if (!Array.isArray(array)) {
         throw "array is not an Array";
     }
     var len = array.length, B = [], C = [], min = array[0], max = array[0];

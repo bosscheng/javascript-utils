@@ -15,7 +15,7 @@
  *
  * */
 var selectionSort = function(array){
-    if (!util.isArray(array)) {
+    if (!Array.isArray(array)) {
         throw "array is not an Array";
     }
 

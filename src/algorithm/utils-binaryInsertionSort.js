@@ -17,7 +17,7 @@
  *
  * */
 var binaryInsertionSort = function (array) {
-    if (!util.isArray(array)) {
+    if (!Array.isArray(array)) {
         throw "array is not an Array";
     }
 
@@ -31,8 +31,7 @@ var binaryInsertionSort = function (array) {
             middle = parseInt((left + right) / 2);
             if (key < array[middle]) {
                 right = middle - 1;
-            }
-            else {
+            } else {
                 left = middle + 1;
             }
         }

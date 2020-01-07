@@ -2,6 +2,12 @@
 * date: 2019-08-29
 * desc:
 */
+
+/**
+ * 将 12345.6 变成字符串 12,345.6 表示。
+ * @param num
+ * @returns {string}
+ */
 function formatNumber(num) {
     num += '';
     const x = num.split('.');

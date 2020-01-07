@@ -16,7 +16,7 @@
  *
  * */
 var bubbleSort = function(array){
-    if (!util.isArray(array)) {
+    if (!Array.isArray(array)) {
         throw "array is not an Array";
     }
     var length = array.length, temp;
