@@ -5,7 +5,7 @@
 */
 
 /**
- * 对象的深度合并。
+ * 对象的深度合并。会覆盖原 object 对象。
  */
 function deepMerge() {
     var result = {};

@@ -36,6 +36,33 @@ var addClass = function (element, classNames) {
 };
 
 /**
+ * For IE9 compat: when both class and :class are present
+ * getAttribute('class') returns wrong value...
+ *
+ * @param {Element} el
+ * @return {String}
+ */
+var getClass = function (element) {
+    let classname = element.className;
+    if (typeof classname === 'object') {
+        classname = classname.baseVal || '';
+    }
+    return classname;
+};
+
+var setClass = function (element, classNames) {
+    const UA = window.navigator.userAgent.toLowerCase();
+    const isIE9 = UA && UA.indexOf('msie 9.0') > 0;
+
+    /* istanbul ignore if */
+    if (isIE9 && !/svg$/.test(element.namespaceURI)) {
+        element.className = classNames;
+    } else {
+        element.setAttribute('class', classNames);
+    }
+};
+
+/**
  *
  * @param element
  * @param classNames
@@ -90,4 +117,4 @@ var hasClass = function (element, className) {
     } else {
         return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
     }
-}
+};

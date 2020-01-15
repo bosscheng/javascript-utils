@@ -41,3 +41,4 @@ function parseTimeWX(time) {
 
     return timeStr;
 }
+
