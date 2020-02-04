@@ -3,7 +3,8 @@
 * desc:
 */
 /*
- * 获取网页被卷去的位置
+ * 获取滚动条距顶部和左边的距离
+ * 利用 body.scrollTop 和  documentElement.scrollTop
  * */
 var getScrollXY = function () {
     return document.body.scrollTop ? {

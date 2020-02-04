@@ -1,6 +1,6 @@
 /*
 * date: 2019-08-23
-* desc:
+* desc: 获取当前时间的 xx-xx-xx xx:xx:xx 格式
 */
 var getNowTime = function () {
     var time = new Date();

@@ -1,6 +1,6 @@
 /*
 * date: 2019-11-13
-* desc:
+* desc: 获取某个月的第一天。
 */
 function getMonthFirstDay(time) {
     let date = time ? new Date(time) : new Date();

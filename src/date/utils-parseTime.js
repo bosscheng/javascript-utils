@@ -1,3 +1,9 @@
+/**
+ * 格式化当前时间。
+ * @param time
+ * @param cFormat
+ * @returns {string|null}
+ */
 function parseTime(time, cFormat) {
     if (arguments.length === 0) {
         return null

@@ -1,3 +1,8 @@
+/**
+ * 格式化 当前时间。。。
+ * @param formatStr
+ * @returns {string}
+ */
 function parseCurrentTime(formatStr) {
     var date = new Date();
     var str = formatStr;
