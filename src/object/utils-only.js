@@ -1,5 +1,7 @@
 /*
 * date: 2019-06-27
+* @params obj Object
+* @params keys Array | string
 * desc:
 */
 function only(obj, keys) {
