@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<pre>
+    LRUCache cache = new LRUCache( 2 /* 缓存容量 */ );
+    cache.put(1, 1);
+    cache.put(2, 2);
+    cache.get(1);       // 返回  1
+    cache.put(3, 3);    // 该操作会使得密钥 2 作废
+    cache.get(2);       // 返回 -1 (未找到)
+    cache.put(4, 4);    // 该操作会使得密钥 1 作废
+    cache.get(1);       // 返回 -1 (未找到)
+    cache.get(3);       // 返回  3
+    cache.get(4);       // 返回  4
+</pre>
+<script src="../src/algorithm/utils-LRU.js"></script>
+<script>
+    const lruCache = new LRU(2);
+    lruCache.put(1, 1);
+    lruCache.put(2, 2);
+    console.log(lruCache.cache);
+    console.log(lruCache.get(1));
+    lruCache.put(3, 3);
+    console.log(lruCache.get(2));
+    lruCache.put(4, 4);
+    console.log(lruCache.cache);
+    console.log(lruCache.get(1));
+    console.log(lruCache.get(3));
+    console.log(lruCache.get(4));
+
+    console.log('-----------分割线--------');
+    const lruCache2 = new LRU2(2);
+    lruCache2.put(1, 1);
+    lruCache2.put(2, 2);
+    console.log(lruCache2.cache);
+    console.log(lruCache2.get(1));
+    lruCache2.put(3, 3);
+    console.log(lruCache2.get(2));
+    lruCache2.put(4, 4);
+    console.log(lruCache2.cache);
+    console.log(lruCache2.get(1));
+    console.log(lruCache2.get(3));
+    console.log(lruCache2.get(4));
+
+    //
+
+
+</script>
+</body>
+</html>
