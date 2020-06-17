@@ -1,6 +1,6 @@
 /*
 * date: 2019-08-21
-* desc: time 时间的上个星期，周一  周日 时间
+* desc: ${time} 时间的上个星期，周一  周日 时间
 */
 
 function getLastWeek(time) {

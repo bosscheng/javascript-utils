@@ -1,6 +1,6 @@
 /*
 * date: 2020-01-15
-* desc:
+* desc: 格式化时间日期
 */
 function convertTimestamp(runningTime) {
     const time = (runningTime / 1000).toFixed(1);
