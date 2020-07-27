@@ -1,6 +1,6 @@
 /*
 * date: 2019-08-25
-* desc: 获取${startTime} 到 ${endTime} 时间间隔内，${step} 间隔的时间数组
+* desc: 获取${startTime} 到 ${endTime} 时间间隔内，${step} 间隔(00:10格式)的时间数组
 */
 const getMinuteRange = (startTime, endTime, step) => {
     let result = [];

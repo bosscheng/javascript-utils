@@ -1,4 +1,10 @@
-// get time range array
+/**
+ *
+ * @param startTime
+ * @param endTime
+ * @desc 获取 ${startTime} 到 ${endTime} 之间，时间范围(一天一间隔)
+ * @returns {[]}
+ */
 export function getTimeRange(startTime, endTime) {
 
     var result = [];
