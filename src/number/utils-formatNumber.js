@@ -6,14 +6,41 @@
 /**
  * 将 12345.6 变成字符串 12,345.6 表示。
  * @param num
+ * @param unit
+ * @param fixedNum
  * @returns {string}
  */
-function formatNumber(num) {
-    num += '';
+function formatNumber(num, unit, fixedNum) {
+
+    // 如果是数字 则表示的小数点的长度
+    if (typeof unit === 'number') {
+        fixedNum = unit;
+        unit = null;
+    }
+
     const x = num.split('.');
     let x1 = x[0];
-    const x2 = x.length > 1 ? '.' + x[1] : '';
+    let tempX2 = x[1] + '';
+
+    if (typeof fixedNum === 'number') {
+        if (tempX2.length > fixedNum) {
+            tempX2 = tempX2.slice(0, fixedNum);
+        }
+    }
+    let x2 = x.length > 1 && tempX2.length > 0 ? '.' + tempX2 : '';
     const rgx = /(\d+)(\d{3})/;
+
+    let x1l = ('' + x1).length;
+    // 如果是到千
+    if (unit === 'k' && x1l > 3) {
+        //截取到千
+        x1 = ('' + x1).slice(0, x1l - 3);
+        x2 = "";
+    } else if (unit === 'm' && x1l > 6) {
+        x1 = ('' + x1).slice(0, x1l - 6);
+        x2 = "";
+    }
+
     while (rgx.test(x1)) {
         x1 = x1.replace(rgx, '$1' + ',' + '$2');
     }
