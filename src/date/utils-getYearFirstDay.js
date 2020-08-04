@@ -1,6 +1,6 @@
 /*
 * date: 2019-11-13
-* desc: 获取某年的第一天。
+* desc: 获取{time}年的第一天。
 */
 function getYearFirstDay(time) {
     let date = time ? new Date(time) : new Date();

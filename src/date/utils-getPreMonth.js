@@ -1,4 +1,4 @@
-// 获取前面某一个月的(月初-月末)的时间戳
+// 获取{time}前{num}月的(月初-月末)的时间戳
 function getPreMonth(time, num) {
     let result = {
         start: '',
