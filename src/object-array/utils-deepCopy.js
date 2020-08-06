@@ -1,4 +1,4 @@
-// 深拷贝
+// 对象的深拷贝
 function deepCopy(obj) {
     var result;
     if (typeof obj === 'object') {
