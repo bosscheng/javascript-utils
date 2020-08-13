@@ -41,7 +41,7 @@ function equals(o1, o2) {
             }
 
             // 数组对象遍历比较
-            if ((length = o1.length) == o2.length) {
+            if ((length = o1.length) === o2.length) {
                 for (key = 0; key < length; key++) {
                     if (!equals(o1[key], o2[key])) {
                         return false;
@@ -65,7 +65,7 @@ function equals(o1, o2) {
                 return false;
             }
 
-            return o1.toString() == o2.toString();
+            return o1.toString() === o2.toString();
         }
         // 对象
         else {
@@ -128,18 +128,3 @@ function contains(array, obj, arrayProperty, objProperty) {
     return false;
 }
 
-
-
-//---------------------------------分割线----------------------------
-
-
-var indexOf = Array.prototype.indexOf;
-
-//
-function contains2(arr, value) {
-    if (!Array.isArray(arr)) {
-        return false;
-    }
-
-    return indexOf.call(arr, value) > -1;
-}
