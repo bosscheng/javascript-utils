@@ -28,7 +28,7 @@ var getPageViewWidth = function () {
  * 获取页面宽度
  * */
 var getPageWidth = function () {
-    var g = document, a = g.body, f = g.documentElement, d = g.compatMode == "BackCompat"
+    var g = document, a = g.body, f = g.documentElement, d = g.compatMode === "BackCompat"
         ? a
         : g.documentElement;
     return Math.max(f.scrollWidth, a.scrollWidth, d.clientWidth);
@@ -38,7 +38,7 @@ var getPageWidth = function () {
  * 获取页面的高度
  * */
 var getPageHeight = function () {
-    var g = document, a = g.body, f = g.documentElement, d = g.compatMode == "BackCompat"
+    var g = document, a = g.body, f = g.documentElement, d = g.compatMode === "BackCompat"
         ? a
         : g.documentElement;
     return Math.max(f.scrollHeight, a.scrollHeight, d.clientHeight);
