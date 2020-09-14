@@ -1,6 +1,6 @@
 /**
  * Date:2020/9/14
- * Desc: 小数点
+ * Desc: tofixed${num}小数点,默认${numFixed}。
  */
 
 function rateNum(num, numFixed) {
