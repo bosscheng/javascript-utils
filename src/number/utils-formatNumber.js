@@ -36,7 +36,10 @@ function formatNumber(num, unit, fixedNum) {
         //截取到千
         x1 = ('' + x1).slice(0, x1l - 3);
         x2 = "";
-    } else if (unit === 'm' && x1l > 6) {
+    }
+    // 如果是百万
+    else if (unit === 'm' && x1l > 6) {
+        // 截取到百万
         x1 = ('' + x1).slice(0, x1l - 6);
         x2 = "";
     }
@@ -56,7 +59,6 @@ function formatNumber(num, unit, fixedNum) {
  * @param decimals: 保留几位小数
  * @param decPoint: 小数符号
  * @param thousandsSep: 千分位符号
-
  *
  * */
 var numberFormat = function (number, decimals, decPoint, thousandsSep) {
