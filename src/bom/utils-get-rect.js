@@ -31,5 +31,4 @@ function getBoundingClientRect(element) {
         right: rect.right - left
 
     }
-
 }
