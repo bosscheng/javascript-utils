@@ -16,6 +16,4 @@ var isArrayLike = function (value) {
     return isString(value) || isArray(value) || length === 0 || typeof length === "number" && length > 0 && (length - 1) in value;
 };
 
-var isArrayLike2 = function (value) {
-    return value !== null && typeof value !== "function" && isFinite(value.length);
-};
+
