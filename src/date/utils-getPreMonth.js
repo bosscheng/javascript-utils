@@ -1,10 +1,12 @@
 // 获取{time}前{num}月的(月初-月末)的时间戳
+// 默认是上一个月的时间。
 function getPreMonth(time, num) {
     let result = {
         start: '',
         end: ''
     };
-    num = parseInt(num || 1, 10) || 1;
+
+    num = (num === null || num === undefined) ? 1 : num;
 
     let date = time ? new Date(time) : new Date();
     //
