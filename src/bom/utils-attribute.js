@@ -14,3 +14,8 @@ var setAttribute = function (target, attribute, value) {
         target[attribute] = value;
     }
 };
+
+var attribute = {
+    getAttribute,
+    setAttribute
+};
