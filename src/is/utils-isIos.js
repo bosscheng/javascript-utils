@@ -3,6 +3,6 @@
  * Desc:
  */
 var isIos = function () {
-    var ua = window.navigator.userAgent;
-    return !!ua.match(/iphone|ipad|iPod/gi);
+    var ua = window.navigator.userAgent.toLowerCase();
+    return !!ua.match(/ios|iphone|ipad|iPod/gi);
 };

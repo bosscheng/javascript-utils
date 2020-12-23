@@ -3,6 +3,6 @@
  * Desc:
  */
 var isAndroid = function () {
-    var ua = window.navigator.userAgent;
+    var ua = window.navigator.userAgent.toLowerCase();
     return !!ua.match(/android/gi);
 };
