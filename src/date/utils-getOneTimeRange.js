@@ -5,20 +5,25 @@
 // 默认： 获取时间的 0点 24点时间。
 
 const getOneTimeRange = (time, options) => {
-    options = options || {};
     let date;
 
-    if (!time) {
+    // 都为空的时候
+    if (!time && !options) {
         date = new Date();
-    }
-
-    if (typeof time === 'object') {
+    } else if (Object.prototype.toString.call(time) !== '[object Date]' && time !== null && typeof time === 'object') {
+        // time 为 options 参数。
+        options = time;
+        date = new Date();
+    } else if (Object.prototype.toString.call(time) === '[object Date]') {
+        // time 是时间格式
         date = time;
     } else {
+        // time 是 int 格式。
         if (('' + time).length === 10) time = parseInt(time) * 1000;
         time = +time; // 转成int 型
         date = new Date(time);
     }
+    options = options || {};
 
     let result = {
         start: 0,
