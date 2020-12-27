@@ -1,6 +1,6 @@
 /*
 * date: 2019-08-31
-* desc: 秒 转换为 00:00:00 格式。
+* desc: 秒(second) 转换为 00:00:00 格式。
 */
 
 function formatTimeTips(time) {
