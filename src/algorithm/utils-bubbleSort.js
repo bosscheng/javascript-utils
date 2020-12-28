@@ -1,4 +1,3 @@
-
 /**
  * @desc
  *      冒泡排序
@@ -15,19 +14,25 @@
  *  重复步骤1~3，直到排序完成。
  *
  * */
-var bubbleSort = function(array){
+var bubbleSort = function (array) {
     if (!Array.isArray(array)) {
         throw "array is not an Array";
     }
     var length = array.length, temp;
 
     for (var i = 0; i < length; i++) {
+        let isChange = false;
         for (var j = length - 1; j >= i; j--) {
             if (array[j] < array[j - 1]) {
                 temp = array[j];
                 array[j] = array[j - 1];
                 array[j - 1] = temp;
+                isChange = true;
             }
+        }
+
+        if (!isChange) {
+            break;
         }
     }
     return array;
