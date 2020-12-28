@@ -14,7 +14,7 @@ function deepCopy(obj) {
     return result;
 }
 
-//  deep copy 
+//  deep copy
 function deepCopy3(target) {
     if (typeof target === 'object') {
         const result = Array.isArray(target) ? [] : {};
