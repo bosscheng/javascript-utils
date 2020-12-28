@@ -14,6 +14,21 @@ function deepCopy(obj) {
     return result;
 }
 
+//  deep copy 
+function deepCopy3(target) {
+    if (typeof target === 'object') {
+        const result = Array.isArray(target) ? [] : {};
+        for (const key in target) {
+            if (typeof target[key] === 'object') {
+                result[key] = deepCopy3(target[key]);
+            } else {
+                result[key] = target[key];
+            }
+        }
+    }
+    return target;
+}
+
 
 /**
  *  Deep copy the given object considering circular structure.
