@@ -1,7 +1,7 @@
 /**
  *
  * @param value  单位 Bytes
- * @returns {string} 
+ * @returns {string}
  */
 function formatFileSize(value) {
     if (null == value || value == '') {
