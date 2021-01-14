@@ -1,6 +1,6 @@
 /*
 * date: 2019-06-12
-* desc:
+* desc: 36位uuid
 */
 function uuid() {
     // return (+new Date() * 1e6 + Math.floor(Math.random() * 1e6)).toString(36);
