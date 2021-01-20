@@ -8,6 +8,7 @@ function getMediaSource () {
 }
 const WEB_SUPPORT_H264_CODEC = 'video/mp4; codecs="avc1.42E01E,mp4a.40.2"'
 
+// mse h264 support
 function isMSESupported() {
     const mediaSource = getMediaSource()
     const sourceBuffer = window.SourceBuffer || window.WebKitSourceBuffer

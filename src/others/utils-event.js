@@ -21,10 +21,12 @@ var eventSplitter = /\s+/;
 //     object.on('expand', function(){ alert('expanded'); });
 //     object.trigger('expand');
 //
-function Events() {}
+function Events() {
+}
+
 // Bind one or more space separated events, `events`, to a `callback`
 // function. Passing `"all"` will bind the callback to all events fired.
-Events.prototype.on = function(events, callback, context) {
+Events.prototype.on = function (events, callback, context) {
     var cache, event, list;
     if (!callback) return this;
     cache = this.__events || (this.__events = {});
@@ -38,11 +40,11 @@ Events.prototype.on = function(events, callback, context) {
 // Remove one or many callbacks. If `context` is null, removes all callbacks
 // with that function. If `callback` is null, removes all callbacks for the
 // event. If `events` is null, removes all bound callbacks for all events.
-Events.prototype.off = function(events, callback, context) {
+Events.prototype.off = function (events, callback) {
     var cache, event, list, i;
     // No events, or removing *all* events.
     if (!(cache = this.__events)) return this;
-    if (!(events || callback || context)) {
+    if (!(events || callback)) {
         delete this.__events;
         return this;
     }
@@ -51,12 +53,12 @@ Events.prototype.off = function(events, callback, context) {
     while (event = events.shift()) {
         list = cache[event];
         if (!list) continue;
-        if (!(callback || context)) {
+        if (!(callback)) {
             delete cache[event];
             continue;
         }
         for (i = list.length - 2; i >= 0; i -= 2) {
-            if (!(callback && list[i] !== callback || context && list[i + 1] !== context)) {
+            if (!(callback && list[i] !== callback)) {
                 list.splice(i, 2);
             }
         }
@@ -65,12 +67,9 @@ Events.prototype.off = function(events, callback, context) {
 };
 // Trigger one or many events, firing all bound callbacks. Callbacks are
 // passed the same arguments as `trigger` is, apart from the event name
-// (unless you're listening on `"all"`, which will cause your callback to
 // receive the true name of the event as the first argument).
-Events.prototype.trigger = function(events) {
-    var cache, event, all, list, i, len, rest = [], args, returned = {
-        status: true
-    };
+Events.prototype.trigger = function (events) {
+    var cache, event, list, i, len, rest = [];
     if (!(cache = this.__events)) return this;
     events = events.split(eventSplitter);
     // Fill up `rest` with the callback arguments.  Since we're only copying
@@ -79,20 +78,15 @@ Events.prototype.trigger = function(events) {
         rest[i - 1] = arguments[i];
     }
     // For each event, walk through the list of callbacks twice, first to
-    // trigger the event, then to trigger any `"all"` callbacks.
     while (event = events.shift()) {
         // Copy callback lists to prevent modification.
-        if (all = cache.all) all = all.slice();
         if (list = cache[event]) list = list.slice();
         // Execute event callbacks.
-        callEach(list, rest, this, returned);
-        // Execute "all" callbacks.
-        callEach(all, [ event ].concat(rest), this, returned);
+        callEach(list, rest, this);
     }
-    return returned.status;
 };
 // Mix `Events` to object instance or Class function.
-Events.mixTo = function(receiver) {
+Events.mixTo = function (receiver) {
     receiver = receiver.prototype || receiver;
     var proto = Events.prototype;
     for (var p in proto) {
@@ -105,7 +99,7 @@ Events.mixTo = function(receiver) {
 // -------
 var keys = Object.keys;
 if (!keys) {
-    keys = function(o) {
+    keys = function (o) {
         var result = [];
         for (var name in o) {
             if (o.hasOwnProperty(name)) {
@@ -115,14 +109,12 @@ if (!keys) {
         return result;
     };
 }
+
 // Execute callbacks
-function callEach(list, args, context, returned) {
-    var r;
+function callEach(list, args, context) {
     if (list) {
-        for (var i = 0, len = list.length; i < len; i += 2) {
-            r = list[i].apply(list[i + 1] || context, args);
-            // trigger will return false if one of the callbacks return false
-            r === false && returned.status && (returned.status = false);
+        for (var i = 0, len = list.length; i < len; i += 1) {
+            list[i].apply(context, args);
         }
     }
 }
