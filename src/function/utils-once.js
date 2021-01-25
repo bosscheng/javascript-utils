@@ -15,13 +15,3 @@ var once = function (fn, context) {
     };
 };
 
-
-var once2 = function (fn) {
-    let called = false;
-    return function () {
-        if (!called) {
-            called = true;
-            fn.apply(this, arguments);
-        }
-    }
-};
