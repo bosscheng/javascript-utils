@@ -1,6 +1,8 @@
 /**
  * Date:2020/10/28
  * Desc:
+ * @param url {string} 文件资源url
+ * @param fileName {string} [outName] 下载保存文件名称，可选
  */
 function downloadByUrl(url, fileName) {
     const isChrome = window.navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
