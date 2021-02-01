@@ -1,6 +1,6 @@
 /*
 * date: 2020-01-15
-* desc:
+* desc: 复制到剪贴板
 */
 function executeCopy(textValue) {
     const input = document.createElement('textarea');

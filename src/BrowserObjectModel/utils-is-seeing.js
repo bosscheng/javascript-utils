@@ -1,5 +1,6 @@
 /**
  * Date: 8/13/20
+ * @desc 元素是否可见。
  */
 function isSeeing(el, options) {
     const setting = Object.assign({
