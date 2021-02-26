@@ -4,6 +4,7 @@
  * @return {String}
  */
 function formatPassTime(startTime) {
+    startTime = Date.parse(new Date(startTime));
     var currentTime = Date.parse(new Date()),
         time = currentTime - startTime,
         day = parseInt(time / (1000 * 60 * 60 * 24)),
