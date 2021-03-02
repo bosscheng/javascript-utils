@@ -1,12 +1,19 @@
 /**
  *
- * @desc   格式化现在距${endTime}的剩余时间
+ * @desc   格式化${startTime}距${endTime}的剩余时间
+ *  @param  {Date} startTime
  * @param  {Date} endTime
  * @return {String}
  */
-function formatRemainTime(endTime) {
+function formatRemainTime(startTime, endTime) {
     var startDate = new Date(); //开始时间
-    var endDate = new Date(endTime); //结束时间
+    var endDate = new Date(); //结束时间
+    if (startTime) {
+        startDate = new Date(startTime);
+    }
+    if (endTime) {
+        endDate = new Date(endTime);
+    }
     var t = endDate.getTime() - startDate.getTime(); //时间差
     var d = 0,
         h = 0,
