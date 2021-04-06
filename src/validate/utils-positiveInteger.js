@@ -4,7 +4,7 @@
  */
 
 // 正整数
-function positive_integer() {
-    return '^[1-9]+\\d*$';
+function positive_integer(str) {
+    return /^[1-9]+\\d*$/.test(str);
 }
 

@@ -4,6 +4,6 @@
  */
 
 // 负整数
-function negative_integer() {
-    return '^-[1-9]+\\d*$';
+function negative_integer(str) {
+    return /^-[1-9]+\\d*$/.test(str);
 }

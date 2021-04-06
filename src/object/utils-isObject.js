@@ -37,3 +37,7 @@ var isObject2 = function (value) {
 var isObject3 = function (value) {
     return value !== null && typeof value === 'object';
 }
+
+var isObject4 = function (value) {
+    return value === null ? false : Object.prototype.toString.call(value) === "[object Object]";
+}
