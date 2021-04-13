@@ -28,7 +28,7 @@ function _pullAt(arr, indexes) {
  * console.log(arr) // => [1, 3]
  * console.log(evens) // => [2, 4]
  */
-function remove(arr, predicate) {
+function remove$2(arr, predicate) {
 
     const result = [];
 
@@ -52,7 +52,7 @@ function remove(arr, predicate) {
 }
 
 // 删除 item
-function remove3(arr, item) {
+function remove$3(arr, item) {
     if (arr.length) {
         const index = arr.indexOf(item);
         if (index > -1) {
