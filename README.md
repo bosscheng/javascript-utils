@@ -12,13 +12,21 @@
 
 ## array 方面
 
-## bom 方面
+## blob 方面
+
+## browser 方面
+
+## browser-object-model 方面
+
+## canvas
 
 ## css 方面
 
 ## date 方面 
 
 ## function 方面
+
+## image
 
 ## is 方面
 
@@ -41,3 +49,13 @@
 - toNumber
 - toObject
 - toString
+
+## url 方面
+
+
+## validate 方面
+
+
+## video 方面
+
+## websocket 方面
