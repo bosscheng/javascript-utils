@@ -9,7 +9,6 @@ function _setScrollTop(value) {
 
 function _getScrollTop() {
     return (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-
 }
 
 var _requestAnimFrame = (function () {
