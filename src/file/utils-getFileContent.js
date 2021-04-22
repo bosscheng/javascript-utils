@@ -1,3 +1,8 @@
+/**
+ * @desc 读取文件内容。
+ * @param file
+ * @returns {Promise}
+ */
 function getFileContent(file) {
     return new Promise(function (resolve, reject) {
         const fileReader = new FileReader();

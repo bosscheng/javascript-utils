@@ -1,4 +1,4 @@
-// 将base64转换成file文件
+// 将base64转换成file格式文件
 function base64ToFile(base64, fileName) {
     const arr = base64.split(',');
     const m = arr[0].match(/:(.*?);/);

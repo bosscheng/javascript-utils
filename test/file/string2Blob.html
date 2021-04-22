@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="../../src/file/utils-string2Blob.js"></script>
+<script src="../../src/file/utils-download.js"></script>
+<script>
+    const json = {name: '张三'};
+    const result = string2Blob(JSON.stringify(json));
+    console.log(result);
+    download(result,'name.json');
+</script>
+</body>
+</html>
