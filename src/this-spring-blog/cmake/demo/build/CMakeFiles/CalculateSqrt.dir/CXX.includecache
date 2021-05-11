@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/xuxiuquan/mygithub/this-spring-blog/cmake/demo/calculatesqrt.cpp
+stdio.h
+-
+stdlib.h
+-
+string
+-
+iostream
+-
+math.h
+-
+CalculateSqrtConfig.h
+/Users/xuxiuquan/mygithub/this-spring-blog/cmake/demo/CalculateSqrtConfig.h
+
+CalculateSqrtConfig.h
+

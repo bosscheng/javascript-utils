@@ -1,0 +1,80 @@
+<!--
+ * @Author: xiuquanxu
+ * @Company: kaochong
+ * @Date: 2020-12-24 20:38:49
+ * @LastEditors: xiuquanxu
+ * @LastEditTime: 2020-12-24 21:26:34
+-->
+<html>
+    <meta charset="utf-8"></meta>
+    <style>
+        .div1 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            margin: -10px;
+        }
+        .div2 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            margin: -10px;
+        }
+        .div3 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            margin: 10px;
+            float: left;
+        }
+        /* .div4:after {
+            content: '';
+            display: block;
+            clear: both;
+        } */
+        .div4 {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            margin: 10px;
+            float: left; 
+        }
+    </style>
+    <body>
+        <h1>margin上下不影响（div1和div2实际距离是最大的那个marging）</h1>
+        margin都是正数：距离=Math.max(margin-botton,margin-top)
+        margin都是负数：距离=Math.min(margin-botton,margin-top)
+        margin一正一负：正负相加
+        <div class="div1">
+
+        </div>
+        <div class="div2">
+
+        </div>
+        <h1>padding左右影响（div3和div4实际距离是两个padding和）</h1>
+        <div>float后脱离文档流</div>
+        <div>清除浮动三种方法：1） clear:both 2) 伪类 3) overflow:hidden(BFC)</div>
+        <div class="div3">
+
+        </div>
+        <div class="div4">
+            
+        </div>
+        <div style="clear: both;"></div>
+        <div>换行</div>
+        <h1>盒子模型</h1>
+        <div>
+            盒子模型：margin+border+padding+content
+            1）盒子模型有两种，W3C和IE盒子模型
+                w3c: width = content
+                IE: width = content+padding+border
+
+            box-sizing属性：
+                1）box-sizing: content-box; 标准盒模型
+                2）box-sizing: border-box; 怪异盒模型
+        </div>
+        <button>
+            button的默认box-sizing是boder-box
+        </button>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+<!--
+ * @Author: xiuquanxu
+ * @Company: kaochong
+ * @Date: 2021-01-06 19:56:08
+ * @LastEditors: xiuquanxu
+ * @LastEditTime: 2021-01-06 20:24:34
+-->
+<html>
+    <meta charset="utf-8"/>
+    <!-- 冒泡定义：从子元素向父元素 -->
+    <!-- 捕获定义：从父元素到子元素 -->
+    <!-- DOM2级事件：规定了事件流包括了三个阶段，第一个阶段捕获，这个阶段不会触发事件，第二个阶段实际目标接收事件，第三个阶段冒泡相应事件 -->
+    <!-- 默认情况事件触发在冒泡事件流 -->
+    <!-- 阻止捕获与冒泡：event.stopPropagation() -->
+    <!-- 通过addEventListener监听事件，第三个参数如果是ture就在捕获阶段执行，false在冒泡阶段执行 -->
+    <!-- <body>
+        <h1>冒泡和捕获</h1>
+        <div onclick="parentClick()">
+            <p onclick="childClick()">点击这里</p>
+        </div>
+    </body>
+    <script>
+        function parentClick() {
+            console.log('parent click');
+        }
+
+        function childClick() {
+            console.log('child click');
+        }
+        // 先输出child click  然后输出 parent click // 冒泡
+    </script> -->
+    <style>
+        #outer {
+            width: 400px;
+            height: 400px;
+            border: 3px solid red;
+            position: relative;
+        }
+        #middle {
+            width: 250px;
+            height: 250px;
+            border: 3px solid black;
+            position: absolute;
+        }
+        #inner {
+            width: 150px;
+            height: 150px;
+            border: 3px solid green;
+            position: absolute;
+        }
+    </style>
+    <body>
+        <h1>冒泡和捕获</h1>
+        <div id="outer">
+            <div id="middle">
+                <div id="inner">
+
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        document.getElementById('outer').addEventListener('click', function() {
+            console.log('outer click');
+        }, false);
+        document.getElementById('middle').addEventListener('click', function() {
+            console.log('middle click');
+        }, true);
+        document.getElementById('inner').addEventListener('click', function(event) {
+            console.log('inner click');
+            // 阻止冒泡
+            // event.stopPropagation();
+        }, false);
+        // middel
+        // inner
+        // outer
+        // 原因：middle是在捕获阶段执行，outer和inner是在冒泡阶段执行
+    </script>
+</html>

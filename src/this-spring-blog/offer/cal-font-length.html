@@ -1,0 +1,37 @@
+<!--
+ * @Author: xiuquanxu
+ * @Company: kaochong
+ * @Date: 2020-12-24 14:19:27
+ * @LastEditors: xiuquanxu
+ * @LastEditTime: 2020-12-24 16:23:27
+-->
+<html>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <meta charset="utf-8"></meta>
+    <body>
+        <div id="app">
+            <!-- <span>123&nbsp;</span> -->
+            <pre style="font-size: 16px; font-family: 'Courier New', Courier, monospace; border: 1px solid red;display: inline-block;" id='text'>{{ world }}</pre>
+            <br>
+           <input v-model="world" style="font-size: 16px; font-family: 'Courier New', Courier, monospace;" type="text" id="input"> 
+        </div>
+    </body>
+    <script type="text/javascript">
+        var v = new Vue({
+            el: '#app',
+            data: {
+                world: ''
+            },
+        });
+        // const ele = document.getElementById('text');
+        // document.getElementById('input').addEventListener('change', function(e) {
+            // console.log('input length:', e.target.value.length);
+            // ele.textContent = e.target.value;
+            // console.log('span length:', ele.textContent.length);
+        // })
+        // function fun(e) {
+        //     console.log(e);
+        //     ele.textContent = e.textContent;
+        // }
+    </script>
+</html>

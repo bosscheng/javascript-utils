@@ -1,0 +1,5 @@
+one.txt:
+	echo one > one.txt  && echo oneover
+result.txt: one.txt
+	cat one.txt > result.txt && echo result >> result.txt
+

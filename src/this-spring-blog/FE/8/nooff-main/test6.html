@@ -1,0 +1,84 @@
+<!--
+ * @Author: xiuquanxu
+ * @Company: kaochong
+ * @Date: 2021-02-18 21:39:46
+ * @LastEditors: xiuquanxu
+ * @LastEditTime: 2021-04-20 18:21:25
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+        <canvas id="webgl" width="400" height="400"></canvas>
+        <br />
+        <button onclick="start()">start</button>
+        <button onclick="end()">end</button>
+</body>
+
+</html>
+<script src="./webgl-utils.js"></script>
+<script src="./webgl-debug.js"></script>
+<script src="./cuon-utils.js"></script>
+<script src="./gl-html-6.js"></script>
+<script type="text/javascript">
+    const ele = document.getElementById('webgl').getContext('bitmaprenderer');
+    const offscreen = new OffscreenCanvas(472, 472);
+
+    var gl = new GlHtml(offscreen);
+    const width = 472;
+    const height = 472;
+    let yData = null;
+    let uData = null;
+    let vData = null
+    fetch('../otest.yuv').then(res => res.arrayBuffer()).then((res) => {
+        const yuvData = new Uint8Array(res);
+        yData = yuvData.subarray(0, width * height);
+        uData = yuvData.subarray(width * height, width * height * 1.25);
+        vData = yuvData.subarray(width * height * 1.25, width * height * 1.5);
+
+        gl.drawImgByYuv({
+            width,
+            height,
+            yData,
+            uData,
+            vData,
+        });
+    });
+
+    var count = 0;
+    function start() {
+        window.timeId = setInterval(() => {
+            count += 1;
+            // console.log(count)
+            if (count % 2 == 0) {
+                gl.drawImgByYuv({
+                    width,
+                    height,
+                    yData,
+                    uData,
+                    vData,
+                });
+            } else {
+                gl.drawImgByYuv({
+                    width,
+                    height,
+                    yData: new Uint8Array(width * height),
+                    uData,
+                    vData,
+                });
+            }
+
+        }, 10);
+    }
+
+    function end() {
+        clearInterval(window.timeId);
+    }
+</script>

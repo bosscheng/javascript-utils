@@ -1,0 +1,45 @@
+<!--
+ * @Author: xiuquanxu
+ * @Company: kaochong
+ * @Date: 2020-09-10 18:49:20
+ * @LastEditors: xiuquanxu
+ * @LastEditTime: 2020-09-11 12:08:31
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script> -->
+    <script src="./test.js"></script>
+    <link rel="import" href="./a.html">
+</head>
+<body>
+    <h1>this is index.html</h1>
+    <div id="app">
+        
+    </div>
+</body>
+</html>
+
+<script>
+    var app = document.getElementById('app');
+    var xhr = new XMLHttpRequest();
+    // xhr.responseType = '';
+    xhr.open('get', 'https://www.kaochong.com/inClass/live?roomId=NB159979504597615806811290673830&uid=s-1413470362&username=-1413470362&role=2&ver=1&ts=1599796381&sign=c262068cfc5ceaca04279a1598c36f0188193f98e03536801223df39730ac58e&force=1&title=21%E8%80%83%E7%A0%94%E6%95%B0%E5%AD%A6%E5%A4%A7%E7%BA%B2%E5%8F%98%E5%8A%A8%E4%B8%8E%E5%86%B2%E5%88%BA%E5%A4%87%E8%80%83&handleType=0');
+    xhr.send();
+    xhr.onreadystatechange = function() {
+        if (xhr
+        .readyState == 4) {
+            if (xhr.status == 200) {
+                app.innerHTML = xhr.responseText;
+            }
+        }
+    }
+    // fetch('./a.html').then((res) =>
+    //     res.html()).then((hl) =>{
+    //     app.innerHTML = hl;
+    // })
+    // $('#app').load('./a.html');
+</script>

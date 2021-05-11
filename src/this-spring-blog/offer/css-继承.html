@@ -1,0 +1,39 @@
+<!--
+ * @Author: xiuquanxu
+ * @Company: kaochong
+ * @Date: 2020-12-24 21:14:20
+ * @LastEditors: xiuquanxu
+ * @LastEditTime: 2020-12-25 10:48:13
+-->
+<html>
+    <meta charset="utf-8"></meta>
+    <style>
+        p {
+            /* all: revert; */
+            color: red;
+            border: 1px solid black;
+            font-size: 10px;
+        }
+        em {
+            border: inherit;
+            /* all: inherit; */
+        }
+        span {
+            font-size: 16;
+        }
+    </style>
+    <div>
+        <h1>inherit、initial和unset使用</h1>
+        <div>inherit: css继承，可以让某个属性继承自父类</div>
+        <div>initial: 初始化，把默认继承的css属性改成默认值</div>
+        <div>unset: 如果是具有继承特性的CSS，如color, 则使用继承值；如果是没有继承特性的CSS属性，如background-color, 则使用初始值。</div>
+        <div>这三种写法可以单独对某个属性进行设置，也可以通过all:unset,这样写设置所有属性</div>
+        <h2>inherit例子</h2>
+        <p>This paragraph has <em>emphasized text</em> in it.</p>
+        <h2>initial例子</h2>
+        <p>This paragraph has <em style="font-size: initial;">emphasized text</em> in it.</p>
+        <h2>unset例子</h2>
+        <p>This paragraph has <span style="font-size: unset;">emphasized text</span> in it.</p>
+        <div>font-size默认大小：medium</div>
+    </div>
+</html>

@@ -1,0 +1,41 @@
+<!--
+ * @Author: xiuquanxu
+ * @Company: kaochong
+ * @Date: 2020-07-14 16:06:20
+ * @LastEditors: xiuquanxu
+ * @LastEditTime: 2020-07-14 17:04:04
+--> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <template id="geekBang">
+        <style>
+            p {
+                color: red;
+            }
+        </style>
+        <p>My paragraph</p>
+    </template>
+    <!-- 一个shadow dom -->
+    <h2>webcomponent</h2>
+    <geek-bang></geek-bang>
+    <h2>webcomponent</h2>
+
+</body>
+<script>
+    class GeeBng extends HTMLElement {
+        constructor() {
+            super();
+            const content = document.querySelector('#geekBang').content;
+            const shadowDOM = this.attachShadow({ mode: 'open' });
+            shadowDOM.appendChild(content.cloneNode(true));
+        }
+    }
+    customElements.define('geek-bang', GeeBng);
+</script>
+</html>

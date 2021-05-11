@@ -1,0 +1,14 @@
+{
+  "name": "hello_world",
+  "version": "0.0.0",
+  "description": "node.js native addon",
+  "main": "hello.js",
+  "private": true,
+  "scripts": {
+  "start": "node hello.js"
+  },
+  "gypfile": true,
+  "dependencies": {
+  "bindings": "~1.2.1"
+  }
+}
