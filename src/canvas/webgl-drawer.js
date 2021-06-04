@@ -52,6 +52,7 @@ class WebglDrawer{
 
     // draw next output picture
     // data 即为解码后的帧数据，width、height分别为视频画面的宽和高
+    // data 是 [y,u,v]
     drawNextOutputPicture(width, height, data) {
         const { yTextureRef, uTextureRef, vTextureRef } = this;
         const gl = this.contextGL;
@@ -79,6 +80,7 @@ class WebglDrawer{
         );
         // 420模式下u和v都为y分量的1/4.
         const cbDataLength = width * height / 4;
+
         const cbData = i420Data.subarray(yDataLength, yDataLength + cbDataLength);
         gl.activeTexture(gl.TEXTURE1);
         gl.bindTexture(gl.TEXTURE_2D, uTextureRef);
