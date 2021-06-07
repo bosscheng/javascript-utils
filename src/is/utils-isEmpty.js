@@ -20,3 +20,4 @@ function isEmpty3(o) {
     }
     return true;
 }
+
