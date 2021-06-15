@@ -330,7 +330,7 @@ class WebglDrawer{
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
         // 表示V方向不需要重复贴图
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-
+        //
         gl.bindTexture(gl.TEXTURE_2D, null);
 
         return textureRef;
