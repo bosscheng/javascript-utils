@@ -32,3 +32,5 @@ function formatTimeTips(time) {
 
     return result;
 }
+
+

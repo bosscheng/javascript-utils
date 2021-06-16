@@ -3,6 +3,6 @@
  * Desc:
  */
 function isWechat() {
-    const ua = navigator.userAgent.toLowerCase()
+    const ua = window.navigator.userAgent;
     return /MicroMessenger/i.test(ua)
 }
