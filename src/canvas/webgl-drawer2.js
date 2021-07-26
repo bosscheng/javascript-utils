@@ -1,4 +1,4 @@
-export default (gl)=>{
+export default (gl) => {
     var vertexShaderScript = [
         'attribute vec4 vertexPos;',
         'attribute vec4 texturePos;',
@@ -89,29 +89,31 @@ export default (gl)=>{
     var uTextureRef = _initTexture('uSampler', 1);
     var vTextureRef = _initTexture('vSampler', 2);
 
-    /**
-     * w:width
-     * h:height,
-     * y: arrayBuffer
-     * u: arrayBuffer
-     * v: arrayBuffer
-     */
-    return function (w, h, y, u, v) {
-        gl.viewport(0, 0, w, h);
-        // y
-        gl.activeTexture(gl.TEXTURE0);
-        gl.bindTexture(gl.TEXTURE_2D, yTextureRef);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, w, h, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, y);
-        // u
-        gl.activeTexture(gl.TEXTURE1);
-        gl.bindTexture(gl.TEXTURE_2D, uTextureRef);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, w / 2, h / 2, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, u);
-        // v
-        gl.activeTexture(gl.TEXTURE2);
-        gl.bindTexture(gl.TEXTURE_2D, vTextureRef);
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, w / 2, h / 2, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, v);
+    return {
+        // render method
+        render: function (w, h, y, u, v) {
+            gl.viewport(0, 0, w, h);
+            gl.activeTexture(gl.TEXTURE0);
+            gl.bindTexture(gl.TEXTURE_2D, yTextureRef);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, w, h, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, y);
+            gl.activeTexture(gl.TEXTURE1);
+            gl.bindTexture(gl.TEXTURE_2D, uTextureRef);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, w / 2, h / 2, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, u);
+            gl.activeTexture(gl.TEXTURE2);
+            gl.bindTexture(gl.TEXTURE_2D, vTextureRef);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, w / 2, h / 2, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, v);
+            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        },
+        //destroy method
+        destroy: function () {
+            gl.deleteProgram(program);
 
-        // 按照多个三角形的方式绘制，从顶点0开始绘制，总计4个顶点
-        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+            gl.deleteBuffer(vertexPosBuffer)
+            gl.deleteBuffer(texturePosBuffer);
+
+            gl.deleteTexture(yTextureRef);
+            gl.deleteTexture(uTextureRef);
+            gl.deleteBuffer(vTextureRef);
+        }
     }
 };

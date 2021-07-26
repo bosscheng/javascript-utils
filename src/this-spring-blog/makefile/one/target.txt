@@ -1,2 +1,0 @@
-clear:	
-	rm -rf rmtest.txt
