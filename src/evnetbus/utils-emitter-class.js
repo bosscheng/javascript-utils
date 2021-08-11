@@ -27,6 +27,14 @@ class Emitter {
 
     off(name, callback) {
         const e = this.e || (this.e = {});
+        if (!name) {
+            Object.keys(e).forEach((key) => {
+                delete e[key];
+            })
+            delete this.e
+            return;
+        }
+
         const evts = e[name];
         const liveEvents = [];
         if (evts && callback) {

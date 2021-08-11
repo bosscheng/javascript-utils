@@ -17,5 +17,9 @@ class EventEmitter {
         let handle = this.events.get(type);
         handle.apply(this, [...arguments].slice(1));
     }
+
+    destroy() {
+        this.events = null;
+    }
 }
 
