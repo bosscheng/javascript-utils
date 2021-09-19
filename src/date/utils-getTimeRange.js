@@ -24,5 +24,9 @@ export function getTimeRange(startTime, endTime) {
         }
         result.push(_endTime);
     }
+
+    if (_endTime === _startTime) {
+        result.push(_startTime)
+    }
     return result;
 }
