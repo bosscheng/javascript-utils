@@ -1,3 +1,7 @@
+/**
+ * 获取 scrollbar 宽度
+ * @returns {number}
+ */
 function getScrollbarWidth() {
     const div = document.createElement('div');
     div.style.visibility = 'hidden';
