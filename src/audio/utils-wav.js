@@ -1,6 +1,10 @@
+/**
+ *  @desc
+ *      主要步骤 init(config)-> record(buffer) -> exportWAV(type)-> clear()
+ *      额外的方法：getBuffer()
+ */
 class UtilsWav {
     constructor() {
-
 
         this.recLength = 0;
         this.recBuffersL = [];
@@ -85,9 +89,9 @@ class UtilsWav {
         /* channel count */
         view.setUint16(22, 2, true);
         /* sample rate */
-        view.setUint32(24, sampleRate, true);
+        view.setUint32(24, this.sampleRate, true);
         /* byte rate (sample rate * block align) */
-        view.setUint32(28, sampleRate * 4, true);
+        view.setUint32(28, this.sampleRate * 4, true);
         /* block align (channel count * bytes per sample) */
         view.setUint16(32, 4, true);
         /* bits per sample */
