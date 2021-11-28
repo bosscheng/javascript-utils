@@ -9,7 +9,7 @@ var getSearch = function () {
     // 分割
     var queryStr = window.location.href.split('?');
     var gets = [];
-    var getArr = [];
+    var getArr = {};
     var tempArr;
     var key;
     if (queryStr[1]) {
