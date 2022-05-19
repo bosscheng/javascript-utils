@@ -1,3 +1,8 @@
+/**
+ * 16进制 转 arraybuffer
+ * @param hex
+ * @returns {Uint8Array}
+ */
 function utilsHexToByteArray(hex){
     let len = hex.length >> 1;
     var bufView = new Uint8Array(len);
