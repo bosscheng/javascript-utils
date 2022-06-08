@@ -10,13 +10,24 @@
  * @param fixedNum
  * @returns {string}
  */
-function formatNumber(num, unit, fixedNum) {
-
+function formatNumber(num, unit, fixedNum, prefix) {
+    if (num === undefined) {
+        return '--';
+    }
+    if (num === null) {
+        return '--';
+    }
+    num += '';
+    if (!num) {
+        return '';
+    }
     // 如果是数字 则表示的小数点的长度
     if (typeof unit === 'number') {
+        prefix = fixedNum;
         fixedNum = unit;
         unit = null;
     }
+    fixedNum = fixedNum || 2;
 
     const x = num.split('.');
     let x1 = x[0];
@@ -47,7 +58,17 @@ function formatNumber(num, unit, fixedNum) {
     while (rgx.test(x1)) {
         x1 = x1.replace(rgx, '$1' + ',' + '$2');
     }
-    return x1 + x2;
+    let result = x1 + x2;
+
+    if (prefix) {
+        if (result.indexOf('-') === 0) {
+            result = result.replace('-', '-' + prefix)
+        } else {
+            result = prefix + result;
+        }
+    }
+
+    return result;
 }
 
 
