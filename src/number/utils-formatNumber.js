@@ -8,6 +8,7 @@
  * @param num
  * @param unit
  * @param fixedNum
+ * @param prefix 前缀 例如 ¥
  * @returns {string}
  */
 function formatNumber(num, unit, fixedNum, prefix) {
