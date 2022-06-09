@@ -7,3 +7,10 @@ function sleep(time) {
     for (; Date.now() - _now <= time;) {
     }
 }
+
+
+const sleep$2 = async (duration) => (
+    new Promise(resolve =>
+        setTimeout(resolve, duration)
+    )
+);
