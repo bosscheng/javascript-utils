@@ -4,5 +4,5 @@
  */
 var isIos = function () {
     var ua = window.navigator.userAgent.toLowerCase();
-    return !!ua.match(/ios|iphone|ipad|iPod/gi);
+    return !!ua.match(/ios|iphone|ipad|ipod/gi);
 };
