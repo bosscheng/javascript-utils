@@ -116,3 +116,16 @@ var numberFormat = function (number, decimals, decPoint, thousandsSep) {
     // 将数组转义成字符串
     return s.join(dec);
 };
+
+/**
+ * 数字三位加逗号，保留两位小数
+ * @param num
+ * @param pointNum
+ * @returns {string|string}
+ */
+const formatNumber$2 = (num, pointNum = 2) => {
+    if ((!num && num !== 0) || num == '-') return '--'
+    let arr = (typeof num == 'string' ? parseFloat(num) : num).toFixed(pointNum).split('.')
+    let intNum = arr[0].replace(/\d{1,3}(?=(\d{3})+(.\d*)?$)/g, '$&,')
+    return arr[1] === undefined ? intNum : `${intNum}.${arr[1]}`
+}

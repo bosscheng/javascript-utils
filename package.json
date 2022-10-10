@@ -2,7 +2,5 @@
   "name": "javascript-utils",
   "version": "1.0.0",
   "description": "JavaScript utils 收集，涉及各个方面的utils ",
-  "dependencies": {
-    
-  }
+  "dependencies": {}
 }
