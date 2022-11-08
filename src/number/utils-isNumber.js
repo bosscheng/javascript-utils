@@ -18,11 +18,12 @@ var isNumber = function (value) {
     return typeof value === "number";
 };
 
-var toString = Object.prototype.toString;
 /**
  *
  *
  * */
 var isNumber2 = function (value) {
+    var toString = Object.prototype.toString;
+
     return toString.call(value) === "[object Number]";
 };
