@@ -14,7 +14,12 @@ function xssEncode(str) {
         _str = String(str);
     }
 
-    return _str.replace(/&/g, '&amp;').replace(/>/g, '&gt;').replace(/</g, '&lt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/\s/g, '&nbsp;');
+    return _str.replace(/&/g, '&amp;')
+        .replace(/>/g, '&gt;')
+        .replace(/</g, '&lt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/\s/g, '&nbsp;');
 }
 
 /**
