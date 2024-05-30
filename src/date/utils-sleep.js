@@ -8,7 +8,11 @@ function sleep(time) {
     }
 }
 
-
+/**
+ *
+ * @param duration 单位 ms
+ * @returns {Promise<Promise<unknown> | Promise>}
+ */
 const sleep$2 = async (duration) => (
     new Promise(resolve =>
         setTimeout(resolve, duration)
